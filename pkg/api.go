@@ -78,10 +78,10 @@ func addEndpoints(e *gin.Engine) {
 	rutGroup.GET("/activities", cache.CachePage(store, day, rut.SIIActivityHandler))
 
 	economyGroup := e.Group("/economy")
-	economyGroup.GET("/indicators", cache.CachePage(store, time.Hour, economy.BancoCentraIndicatorsHandler))
-	economyGroup.GET("/crypto", cache.CachePage(store, time.Minute * 15, economy.CryptoHandler))
+	economyGroup.GET("/indicators", cache.CachePage(store, time.Hour, economy.BancoCentralIndicatorsHandler))
+	economyGroup.GET("/crypto", cache.CachePage(store, time.Minute*15, economy.CryptoHandler))
 	economyGroup.GET("/currencies", cache.CachePage(store, day/2, economy.CurrencyHandler))
 
 	weatherGrop := e.Group("/weather")
-	weatherGrop.GET("/stations", cache.CachePage(store, time.Minute * 30, weather.StationsHandler))
+	weatherGrop.GET("/stations", cache.CachePage(store, time.Minute*30, weather.StationsHandler))
 }

@@ -26,7 +26,7 @@ type EconomicIndicators struct {
 }
 
 func GetBancoCentralIndicators() (EconomicIndicators, error) {
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second)
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*3)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(
@@ -142,7 +142,6 @@ func parseChileanFloat(floatStr string) float64 {
 
 	return res
 }
-
 
 func usdToCLP(usd float64) float64 {
 	if DolarToCLP == 0 {

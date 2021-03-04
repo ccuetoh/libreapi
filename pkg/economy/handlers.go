@@ -1,8 +1,10 @@
 package economy
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
-func BancoCentraIndicatorsHandler(ctx *gin.Context) {
+func BancoCentralIndicatorsHandler(ctx *gin.Context) {
 	indicators, err := GetBancoCentralIndicators()
 	if err != nil {
 		ctx.JSON(500, gin.H{
@@ -16,7 +18,7 @@ func BancoCentraIndicatorsHandler(ctx *gin.Context) {
 
 	ctx.JSON(200, gin.H{
 		"status": "success",
-		"data": indicators,
+		"data":   indicators,
 	})
 }
 
@@ -38,21 +40,21 @@ func CryptoHandler(ctx *gin.Context) {
 		if len(coinsFound) == 0 {
 			ctx.JSON(404, gin.H{
 				"status": "success",
-				"data": nil,
+				"data":   nil,
 			})
 			return
 		}
 
 		ctx.JSON(200, gin.H{
 			"status": "success",
-			"data": coinsFound,
+			"data":   coinsFound,
 		})
 		return
 	}
 
 	ctx.JSON(200, gin.H{
 		"status": "success",
-		"data": coins,
+		"data":   coins,
 	})
 }
 
@@ -74,7 +76,7 @@ func CurrencyHandler(ctx *gin.Context) {
 		if len(currenciesFound) == 0 {
 			ctx.JSON(404, gin.H{
 				"status": "success",
-				"data": nil,
+				"data":   nil,
 			})
 			return
 		}
