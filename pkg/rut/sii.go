@@ -18,7 +18,7 @@ import (
 )
 
 type SIIDetail struct {
-	Name string
+	Name       string
 	Activities []EconomicActivity
 }
 
@@ -88,7 +88,7 @@ func GetSIIDetails(r RUT) (SIIDetail, error) {
 	form.Add("txt_captcha", code) // For some reason this is expected inverted
 	form.Add("txt_code", captcha) // code in "txt_captcha" and captcha in "txt_code"
 
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second)
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(
@@ -174,7 +174,6 @@ func ParseHTML(r io.ReadCloser) (SIIDetail, error) {
 
 					activity.Date = date
 				}
-
 
 			})
 
