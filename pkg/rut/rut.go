@@ -72,6 +72,19 @@ func (r RUT) String() string {
 		return ""
 	}
 
+	var digits string
+	for _, d := range r[:len(r)-1] {
+		digits += strconv.Itoa(d)
+	}
+
+	return digits + "-" + r.GetValidationDigit()
+}
+
+func (r RUT) PrettyString() string {
+	if len(r) < 7 || len(r) > 10 {
+		return ""
+	}
+
 	digits := r[:len(r)-1]
 
 	var digitsStr []string

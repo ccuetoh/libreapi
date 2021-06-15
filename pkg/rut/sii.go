@@ -70,19 +70,14 @@ func GetCaptcha() (code string, captcha string, err error) {
 }
 
 func GetSIIDetails(r RUT) (SIIDetail, error) {
-	var rutStr string
-	for _, c := range r[:len(r)-1] {
-		rutStr += strconv.Itoa(c)
-	}
-
 	code, captcha, err := GetCaptcha()
 	if err != nil {
 		return SIIDetail{}, err
 	}
 
 	form := url.Values{}
-	form.Add("RUT", rutStr)
-	form.Add("DV", strconv.Itoa(r[len(r)-1]))
+	form.Add("RUT", r.String()[:len(r)-1])
+	form.Add("DV", r.GetValidationDigit())
 	form.Add("PRG", "STC")
 	form.Add("OPC", "NOR")
 	form.Add("txt_captcha", code) // For some reason this is expected inverted

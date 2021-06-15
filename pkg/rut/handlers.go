@@ -34,7 +34,7 @@ func ValidateHandler(ctx *gin.Context) {
 		"status": "success",
 		"data": gin.H{
 			"valid": valid,
-			"rut":   rut2.String(),
+			"rut":   rut2.PrettyString(),
 		},
 	})
 }
@@ -76,7 +76,7 @@ func DigitHandler(ctx *gin.Context) {
 		"status": "success",
 		"data": gin.H{
 			"digit": digitStr,
-			"rut":   rut2.String(),
+			"rut":   rut2.PrettyString(),
 		},
 	})
 }
@@ -118,8 +118,8 @@ func SIIActivityHandler(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
 		"status": "success",
 		"data": gin.H{
-			"rut":   rut2.String(),
-			"name": details.Name,
+			"rut":        rut2.PrettyString(),
+			"name":       details.Name,
 			"activities": details.Activities,
 		},
 	})
