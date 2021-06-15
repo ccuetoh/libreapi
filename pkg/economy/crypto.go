@@ -12,6 +12,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sahilm/fuzzy"
 )
+
 type Coin struct {
 	Name          string  `json:"name"`
 	Symbol        string  `json:"symbol"`
@@ -25,9 +26,8 @@ type Coin struct {
 	WeekleyChange float64 `json:"weekley_change"`
 }
 
-
 func GetCrypto() ([]Coin, error) {
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second * 5)
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(
@@ -71,7 +71,7 @@ func ParseCryptoHTML(r io.ReadCloser) (coins []Coin, err error) {
 			return
 		}
 
-		var name = s.Find(".cmc-table__cell--sort-by__name").Text()
+		var name = s.Find(".cmc-table__column-name--name").Text()
 		if name == "" {
 			return
 		}
@@ -107,7 +107,7 @@ func usdPriceToInt64(price string) int64 {
 	price = strings.ReplaceAll(price, ",", "")
 	price = strings.Split(price, ".")[0]
 
-	i, _ := strconv.ParseInt(price, 10,64)
+	i, _ := strconv.ParseInt(price, 10, 64)
 	return i
 }
 
@@ -115,7 +115,7 @@ func usdPriceToFloat64(price string) float64 {
 	price = strings.ReplaceAll(price, "$", "")
 	price = strings.ReplaceAll(price, ",", "")
 
-	f, _ := strconv.ParseFloat(price,64)
+	f, _ := strconv.ParseFloat(price, 64)
 	return f
 }
 

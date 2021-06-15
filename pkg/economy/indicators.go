@@ -12,12 +12,12 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-var DolarToCLP float64
+var DollarToCLP float64
 
 type EconomicIndicators struct {
 	UF        float64 `json:"uf"`
 	IVP       float64 `json:"ivp"`
-	Dolar     float64 `json:"dolar"`
+	Dollar    float64 `json:"dollar"`
 	Euro      float64 `json:"euro"`
 	ITCNM     float64 `json:"itcnm"`
 	OztSilver float64 `json:"ozt_silver"`
@@ -55,7 +55,7 @@ func GetBancoCentralIndicators() (EconomicIndicators, error) {
 		return EconomicIndicators{}, err
 	}
 
-	DolarToCLP = indicators.Dolar
+	DollarToCLP = indicators.Dollar
 
 	return indicators, nil
 }
@@ -88,7 +88,7 @@ func ParseIndicatorsHTML(r io.ReadCloser) (EconomicIndicators, error) {
 			return
 		}
 
-		indicators.Dolar = parseChileanFloat(selection.Text())
+		indicators.Dollar = parseChileanFloat(selection.Text())
 	})
 
 	// For some reason 4 was skipped
@@ -144,12 +144,12 @@ func parseChileanFloat(floatStr string) float64 {
 }
 
 func usdToCLP(usd float64) float64 {
-	if DolarToCLP == 0 {
+	if DollarToCLP == 0 {
 		_, err := GetBancoCentralIndicators()
 		if err != nil {
 			return 0
 		}
 	}
 
-	return DolarToCLP * usd
+	return DollarToCLP * usd
 }

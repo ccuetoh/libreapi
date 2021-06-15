@@ -1,9 +1,8 @@
 package libreapi
 
 const (
-	Version = "0.1"
+	Version    = "0.1.1"
 	Descriptor = "LibreAPI v" + Version
-	Author = "Camilo Hernández"
-	Licence = "MIT"
+	Author     = "Camilo Hernández"
+	Licence    = "MIT"
 )
-

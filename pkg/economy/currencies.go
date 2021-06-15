@@ -13,8 +13,8 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/sahilm/fuzzy"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/sahilm/fuzzy"
 )
 
 var ISO4217Dict = map[string]string{
@@ -78,9 +78,9 @@ var ISO4217Dict = map[string]string{
 }
 
 type Currency struct {
-	Name         string
-	ISO4217      string
-	ExchangeRate float64
+	Name         string  `json:"name"`
+	ISO4217      string  `json:"iso4217"`
+	ExchangeRate float64 `json:"exchange_rate"`
 }
 
 func GetCurrencies() ([]Currency, error) {
@@ -89,7 +89,7 @@ func GetCurrencies() ([]Currency, error) {
 		return nil, err
 	}
 
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second * 5)
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(
