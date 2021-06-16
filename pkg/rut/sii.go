@@ -77,7 +77,7 @@ func GetSIIDetails(r RUT) (SIIDetail, error) {
 
 	form := url.Values{}
 	form.Add("RUT", r.String()[:len(r)-1])
-	form.Add("DV", r.GetValidationDigit())
+	form.Add("DV", VDToString(r[len(r)-1]))
 	form.Add("PRG", "STC")
 	form.Add("OPC", "NOR")
 	form.Add("txt_captcha", code) // For some reason this is expected inverted

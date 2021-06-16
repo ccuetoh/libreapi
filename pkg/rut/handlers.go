@@ -1,8 +1,6 @@
 package rut
 
 import (
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -62,21 +60,12 @@ func DigitHandler(ctx *gin.Context) {
 		return
 	}
 
-	digit := rut2.CalculateValidationDigit(false)
-	rut2 = append(rut2, digit)
-
-	var digitStr string
-	if digit == 0 {
-		digitStr = "K"
-	} else {
-		digitStr = strconv.Itoa(digit)
-	}
-
+	digit := rut2.CalculateVD(false)
 	ctx.JSON(200, gin.H{
 		"status": "success",
 		"data": gin.H{
-			"digit": digitStr,
-			"rut":   rut2.PrettyString(),
+			"digit": VDToString(digit),
+			"rut":   append(rut2, digit).PrettyString(),
 		},
 	})
 }

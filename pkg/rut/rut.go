@@ -20,24 +20,29 @@ func ParseRUT(rut string) (RUT, error) {
 	}
 
 	var rut2 RUT
-	for _, num := range nums {
-		if num == "k" {
-			rut2 = append(rut2, 0)
+	for i, num := range nums {
+		switch num {
+		case "k":
+			if i != len(nums)-1 {
+				return RUT{}, ErrInvalidRUT
+			}
+
+			rut2 = append(rut2, 10)
 			continue
-		}
+		default:
+			numInt, err := strconv.Atoi(num)
+			if err != nil {
+				return RUT{}, ErrInvalidRUT
+			}
 
-		numInt, err := strconv.Atoi(num)
-		if err != nil {
-			return RUT{}, ErrInvalidRUT
+			rut2 = append(rut2, numInt)
 		}
-
-		rut2 = append(rut2, numInt)
 	}
 
 	return rut2, nil
 }
 
-func (r RUT) CalculateValidationDigit(ignoreLast bool) int {
+func (r RUT) CalculateVD(ignoreLast bool) int {
 	var digits []int
 	if ignoreLast {
 		digits = r[:len(r)-1]
@@ -51,20 +56,39 @@ func (r RUT) CalculateValidationDigit(ignoreLast bool) int {
 		sum += mask * r[i]
 	}
 
-	res := 11 - (sum % 11)
-	if res == 10 {
-		return 0 // K
+	return 11 - (sum % 11)
+}
+
+func VDToString(vd int) string {
+	switch vd {
+	case 10:
+		return "K"
+	case 11:
+		return "0"
+	default:
+		return strconv.Itoa(vd)
+	}
+}
+
+func (r RUT) GetVDString() string {
+	val := strconv.Itoa(r[len(r)-1])
+	switch val {
+	case "10":
+		val = "K"
+	case "11":
+		val = "0"
 	}
 
-	return res
+	return val
 }
 
 func (r RUT) IsValid() bool {
-	if len(r) < 7 || len(r) > 10 {
-		return false
+	expect := r.CalculateVD(true)
+	if expect == 11 { // -0 RUTs
+		expect = 0
 	}
 
-	return r[len(r)-1] == r.CalculateValidationDigit(true)
+	return r[len(r)-1] == expect
 }
 
 func (r RUT) String() string {
@@ -77,7 +101,7 @@ func (r RUT) String() string {
 		digits += strconv.Itoa(d)
 	}
 
-	return digits + "-" + r.GetValidationDigit()
+	return digits + "-" + VDToString(r.CalculateVD(true))
 }
 
 func (r RUT) PrettyString() string {
@@ -105,7 +129,7 @@ func (r RUT) PrettyString() string {
 		}
 	}
 
-	return s + "-" + r.GetValidationDigit()
+	return s + "-" + VDToString(r[len(r)-1])
 }
 
 func GetReverseSequence(length int) (s []int) {
@@ -129,13 +153,4 @@ func GetReverseSequence(length int) (s []int) {
 	}
 
 	return s
-}
-
-func (r RUT) GetValidationDigit() string {
-	val := strconv.Itoa(r[len(r)-1])
-	if val == "0" {
-		val = "K"
-	}
-
-	return val
 }
