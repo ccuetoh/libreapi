@@ -2,18 +2,20 @@ package economy
 
 import (
 	"context"
-	"errors"
 	"fmt"
-	"golang.org/x/text/runes"
-	"golang.org/x/text/transform"
-	"golang.org/x/text/unicode/norm"
+
 	"io"
 	"net/http"
 	"strings"
 	"time"
 	"unicode"
 
+	"golang.org/x/text/runes"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
+
 	"github.com/PuerkitoBio/goquery"
+	"github.com/pkg/errors"
 	"github.com/sahilm/fuzzy"
 )
 
@@ -122,7 +124,12 @@ func GetCurrencies() ([]Currency, error) {
 }
 
 func GetCurrenciesDailyURL() (string, error) {
-	doc, err := goquery.NewDocument("https://si3.bcentral.cl/Indicadoressiete/secure/IndicadoresDiarios.aspx")
+	resp, err := http.Get("https://si3.bcentral.cl/Indicadoressiete/secure/IndicadoresDiarios.aspx")
+	if err != nil {
+		return "", errors.Wrap(err, "unable to execute request")
+	}
+
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		return "", err
 	}
