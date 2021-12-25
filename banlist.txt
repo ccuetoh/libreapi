@@ -1,0 +1,6 @@
+# This is the public LibreAPI IP banlist, if you have been banned and believe it to be a mistake
+# please open an Issue on the GitHub repository.
+
+# Scrapping/Excessive amount of requests
+18.218.122.120
+34.199.255.59

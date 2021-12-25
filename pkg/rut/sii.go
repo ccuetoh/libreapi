@@ -80,7 +80,7 @@ func GetSIIDetails(r RUT) (SIIDetail, error) {
 	form.Add("DV", VDToString(r[len(r)-1]))
 	form.Add("PRG", "STC")
 	form.Add("OPC", "NOR")
-	form.Add("txt_captcha", code) // For some reason this is expected inverted
+	form.Add("txt_captcha", code) // For some reason this is expected inverted:
 	form.Add("txt_code", captcha) // code in "txt_captcha" and captcha in "txt_code"
 
 	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)

@@ -2,17 +2,21 @@ package libreapi
 
 import (
 	"compress/gzip"
-	"github.com/CamiloHernandez/libreapi/pkg/weather"
-	"github.com/gin-contrib/cache"
-	"github.com/gin-contrib/cache/persistence"
-	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
+	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/CamiloHernandez/libreapi/pkg/economy"
 	"github.com/CamiloHernandez/libreapi/pkg/rut"
+	"github.com/CamiloHernandez/libreapi/pkg/weather"
+
+	"github.com/gin-contrib/cache"
+	"github.com/gin-contrib/cache/persistence"
+	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
 )
 
 type TLSPaths struct {
@@ -45,11 +49,29 @@ func Start(port int, certs ...TLSPaths) error {
 		s.TLSConfig = tlsConfig
 	}
 
+	var banlist []string
+	banData, err := ioutil.ReadFile("./banlist.txt")
+	if err != nil {
+		fmt.Println("Unable to read banlist")
+	} else {
+		banData := strings.ReplaceAll(string(banData), "\r", "")
+		for _, line := range strings.Split(banData, "\n") {
+			if len(line) == 0 {
+				continue
+			}
+
+			if line[0] != '#' {
+				banlist = append(banlist, line)
+			}
+		}
+	}
+
 	useGzipMiddleware(engine, gzip.DefaultCompression)
 	useCORSAllowAllMiddleware(engine)
+	useBanlistMiddleware(engine, banlist)
 	addServerInfoMiddleware(engine)
 
-	err = useRateLimiter(engine, "3-S")
+	err = useRateLimiter(engine, "1-S")
 	if err != nil {
 		panic(errors.Wrap(err, "rate limiter"))
 	}
@@ -82,6 +104,6 @@ func addEndpoints(e *gin.Engine) {
 	economyGroup.GET("/crypto", cache.CachePage(store, time.Minute*15, economy.CryptoHandler))
 	economyGroup.GET("/currencies", cache.CachePage(store, day/2, economy.CurrencyHandler))
 
-	weatherGrop := e.Group("/weather")
-	weatherGrop.GET("/stations", cache.CachePage(store, time.Minute*30, weather.StationsHandler))
+	weatherGroup := e.Group("/weather")
+	weatherGroup.GET("/stations", cache.CachePage(store, time.Minute*30, weather.StationsHandler))
 }

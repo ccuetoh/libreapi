@@ -4,9 +4,10 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	limiter "github.com/ulule/limiter/v3"
+	"github.com/ulule/limiter/v3"
 	mgin "github.com/ulule/limiter/v3/drivers/middleware/gin"
-    "github.com/ulule/limiter/v3/drivers/store/memory"
+	"github.com/ulule/limiter/v3/drivers/store/memory"
+	"net/http"
 )
 
 func useCORSAllowAllMiddleware(e *gin.Engine) {
@@ -15,6 +16,25 @@ func useCORSAllowAllMiddleware(e *gin.Engine) {
 
 func useGzipMiddleware(e *gin.Engine, compression int) {
 	e.Use(gzip.Gzip(compression))
+}
+
+func useBanlistMiddleware(e *gin.Engine, banlist []string) {
+	e.Use(func(c *gin.Context) {
+		for _, ip := range banlist {
+			if ip == c.ClientIP() {
+				c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
+					"status": "fail",
+					"errors": gin.H{
+						"remote": "remote is forbidden",
+					},
+				})
+
+				return
+			}
+		}
+
+		c.Next()
+	})
 }
 
 func addServerInfoMiddleware(e *gin.Engine) {
