@@ -44,12 +44,12 @@ func GetBancoCentralIndicators() (EconomicIndicators, error) {
 	if err != nil {
 		return EconomicIndicators{}, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
 		return EconomicIndicators{}, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
 
-	defer res.Body.Close()
 	indicators, err := ParseIndicatorsHTML(res.Body)
 	if err != nil {
 		return EconomicIndicators{}, err
