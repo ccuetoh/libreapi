@@ -13,8 +13,8 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/sahilm/fuzzy"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/sahilm/fuzzy"
 )
 
 type ClimateStation struct {
@@ -46,7 +46,7 @@ type ClimateInstance struct {
 }
 
 func GetClimateStations() ([]ClimateStation, error) {
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second * 5)
+	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(
@@ -67,12 +67,12 @@ func GetClimateStations() ([]ClimateStation, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("status code error: %s", res.Status)
 	}
 
-	defer res.Body.Close()
 	stations, err := ParseClimateHTML(res.Body)
 	if err != nil {
 		return nil, err
@@ -165,7 +165,7 @@ func todayHourToTime(hour string) time.Time {
 	h, _ := strconv.Atoi(sections[0])
 	m, _ := strconv.Atoi(sections[1])
 
-	return t.Add((time.Duration(h) * time.Hour) + (time.Duration(m) *time.Minute))
+	return t.Add((time.Duration(h) * time.Hour) + (time.Duration(m) * time.Minute))
 }
 
 func yesterdayHourToTime(hour string) time.Time {

@@ -27,7 +27,7 @@ type TLSPaths struct {
 func Start(port int, certs ...TLSPaths) error {
 	f, err := os.Create("libreapi.log")
 	if err != nil {
-		panic(errors.Wrap(err, "log file"))
+		return errors.Wrap(err, "log file")
 	}
 
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
@@ -50,11 +50,11 @@ func Start(port int, certs ...TLSPaths) error {
 	}
 
 	var banlist []string
-	banData, err := ioutil.ReadFile("./banlist.txt")
+	binContent, err := ioutil.ReadFile("./banlist.txt")
 	if err != nil {
 		fmt.Println("Unable to read banlist")
 	} else {
-		banData := strings.ReplaceAll(string(banData), "\r", "")
+		banData := strings.ReplaceAll(string(binContent), "\r", "")
 		for _, line := range strings.Split(banData, "\n") {
 			if len(line) == 0 {
 				continue
@@ -73,7 +73,7 @@ func Start(port int, certs ...TLSPaths) error {
 
 	err = useRateLimiter(engine, "1-S")
 	if err != nil {
-		panic(errors.Wrap(err, "rate limiter"))
+		return errors.Wrap(err, "rate limiter")
 	}
 
 	addEndpoints(engine)
@@ -81,9 +81,9 @@ func Start(port int, certs ...TLSPaths) error {
 
 	if useTLS {
 		return s.ListenAndServeTLS(tlsPaths.CertificatePath, tlsPaths.KeyPath)
-	} else {
-		return s.ListenAndServe()
 	}
+
+	return s.ListenAndServe()
 }
 
 func addEndpoints(e *gin.Engine) {

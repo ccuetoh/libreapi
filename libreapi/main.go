@@ -1,6 +1,10 @@
 package main
 
-import "github.com/CamiloHernandez/libreapi/pkg"
+import (
+	"fmt"
+	"github.com/CamiloHernandez/libreapi/pkg"
+	"os"
+)
 
 func main() {
 	certs := libreapi.TLSPaths{
@@ -8,5 +12,8 @@ func main() {
 		KeyPath:         "./certs/libreapi.key",
 	}
 
-	panic(libreapi.Start(443, certs))
+	if err := libreapi.Start(443, certs); err != nil {
+		fmt.Fprintf(os.Stderr, "Unable to start libreapi server: %v", err)
+		os.Exit(1)
+	}
 }

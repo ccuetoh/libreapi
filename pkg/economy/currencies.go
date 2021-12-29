@@ -109,12 +109,12 @@ func GetCurrencies() ([]Currency, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
 
-	defer res.Body.Close()
 	currencies, err := ParseCurrenciesHTML(res.Body)
 	if err != nil {
 		return nil, err

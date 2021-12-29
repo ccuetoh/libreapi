@@ -15,6 +15,13 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/json-iterator/go"
+	errs "github.com/pkg/errors"
+)
+
+var (
+	ErrNoCaptchaCode       = errors.New("unexpected response: no captcha code")
+	ErrInvalidCaptchaCode  = errors.New("unexpected response: captcha code is not a string")
+	ErrTooShortCaptchaCode = errors.New("unexpected response: captcha code is too short")
 )
 
 type SIIDetail struct {
@@ -49,21 +56,21 @@ func GetCaptcha() (code string, captcha string, err error) {
 
 	codeIntf, ok := data["txtCaptcha"]
 	if !ok {
-		return "", "", errors.New("unexpected response: no captcha code")
+		return "", "", ErrNoCaptchaCode
 	}
 
 	code, ok = codeIntf.(string)
 	if !ok {
-		return "", "", errors.New("unexpected response: captcha code is not a string")
+		return "", "", ErrInvalidCaptchaCode
 	}
 
 	if len(code) < 40 {
-		return "", "", errors.New("unexpected response: captcha code is too short")
+		return "", "", ErrTooShortCaptchaCode
 	}
 
 	codeDecoded, err := base64.StdEncoding.DecodeString(code)
 	if err != nil {
-		return "", "", errors.New("unable to decode captcha")
+		return "", "", errs.Wrap(err, "unable to decode captcha")
 	}
 
 	return code, string(codeDecoded)[36:40], nil
@@ -103,12 +110,12 @@ func GetSIIDetails(r RUT) (SIIDetail, error) {
 	if err != nil {
 		return SIIDetail{}, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
 		return SIIDetail{}, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
 
-	defer res.Body.Close()
 	detail, err := ParseHTML(res.Body)
 	if err != nil {
 		return SIIDetail{}, err
