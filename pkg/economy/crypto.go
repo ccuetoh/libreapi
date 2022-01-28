@@ -3,27 +3,27 @@ package economy
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+
 	"io"
 	"net/http"
-	"strconv"
-	"strings"
 	"time"
 
-	"github.com/PuerkitoBio/goquery"
+	"github.com/json-iterator/go"
 	"github.com/sahilm/fuzzy"
 )
 
 type Coin struct {
-	Name          string  `json:"name"`
-	Symbol        string  `json:"symbol"`
-	MarketCap     int64   `json:"market_cap_usd"`
-	PriceUSD      float64 `json:"price_usd"`
-	PriceCLP      float64 `json:"price_clp"`
-	Supply        int64   `json:"supply"`
-	Volume        int64   `json:"volume_usd"`
-	HourlyChange  float64 `json:"hourly_change"`
-	DailyChange   float64 `json:"daily_change"`
-	WeekleyChange float64 `json:"weekley_change"`
+	Name         string  `json:"name"`
+	Symbol       string  `json:"symbol"`
+	MarketCap    int64   `json:"market_cap_usd"`
+	PriceUSD     float64 `json:"price_usd"`
+	PriceCLP     float64 `json:"price_clp"`
+	Supply       int64   `json:"supply"`
+	Volume       int64   `json:"volume_usd"`
+	HourlyChange float64 `json:"hourly_change"`
+	DailyChange  float64 `json:"daily_change"`
+	WeeklyChange float64 `json:"weekly_change"`
 }
 
 func GetCrypto() ([]Coin, error) {
@@ -33,7 +33,7 @@ func GetCrypto() ([]Coin, error) {
 	req, err := http.NewRequestWithContext(
 		timeoutContext,
 		"GET",
-		"https://coinmarketcap.com/all/views/all/",
+		"https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?cryptoType=all&tagType=all&limit=1000",
 		nil,
 	)
 	if err != nil {
@@ -45,13 +45,14 @@ func GetCrypto() ([]Coin, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	defer res.Body.Close()
 
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
 
-	coins, err := ParseCryptoHTML(res.Body)
+	coins, err := ParseCryptoJSON(res.Body)
 	if err != nil {
 		return nil, err
 	}
@@ -59,78 +60,58 @@ func GetCrypto() ([]Coin, error) {
 	return coins, nil
 }
 
-func ParseCryptoHTML(r io.ReadCloser) (coins []Coin, err error) {
-	doc, err := goquery.NewDocumentFromReader(r)
+func ParseCryptoJSON(r io.ReadCloser) (coins []Coin, err error) {
+	dataBytes, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}
 
-	doc.Find("tr").Each(func(i int, s *goquery.Selection) {
-		if i < 3 {
-			// Header
-			return
-		}
+	type ResponseData struct {
+		Data struct {
+			CryptoCurrencyList []struct {
+				Name        string  `json:"name"`
+				Symbol      string  `json:"symbol"`
+				IsActive    int     `json:"isActive"`
+				TotalSupply float64 `json:"totalSupply"`
+				Quotes      []struct {
+					Price            float64 `json:"price"`
+					Volume24H        float64 `json:"volume24h"`
+					MarketCap        float64 `json:"marketCap"`
+					PercentChange1H  float64 `json:"percentChange1h"`
+					PercentChange24H float64 `json:"percentChange24h"`
+					PercentChange7D  float64 `json:"percentChange7d"`
+					PercentChange30D float64 `json:"percentChange30d"`
+				} `json:"quotes"`
+			} `json:"cryptoCurrencyList"`
+		} `json:"data"`
+	}
 
-		var name = s.Find(".cmc-table__column-name--name").Text()
-		if name == "" {
-			return
-		}
+	var data ResponseData
+	err = jsoniter.Unmarshal(dataBytes, &data)
+	if err != nil {
+		return nil, err
+	}
 
-		var symbol = s.Find(".cmc-table__cell--sort-by__symbol").Text()
-		var marketCap = s.Find(".cmc-table__cell--sort-by__market-cap").Text()
-		var priceUSD = s.Find(".cmc-table__cell--sort-by__price").Text()
-		var supply = s.Find(".cmc-table__cell--sort-by__circulating-supply").Text()
-		var volume = s.Find(".cmc-table__cell--sort-by__volume-24-h").Text()
-		var hourChange = s.Find(".cmc-table__cell--sort-by__percent-change-1-h").Text()
-		var dayChange = s.Find(".cmc-table__cell--sort-by__percent-change-24-h").Text()
-		var weekChange = s.Find(".cmc-table__cell--sort-by__percent-change-7-d").Text()
+	for _, coin := range data.Data.CryptoCurrencyList {
+		if coin.IsActive != 1 || len(coin.Quotes) < 1 {
+			continue
+		}
 
 		coins = append(coins, Coin{
-			Name:          name,
-			Symbol:        symbol,
-			MarketCap:     usdPriceToInt64(marketCap),
-			PriceUSD:      usdPriceToFloat64(priceUSD),
-			PriceCLP:      usdToCLP(usdPriceToFloat64(priceUSD)),
-			Supply:        supplyToInt64(supply),
-			Volume:        usdPriceToInt64(volume),
-			HourlyChange:  percentageVariationToFloa64(hourChange),
-			DailyChange:   percentageVariationToFloa64(dayChange),
-			WeekleyChange: percentageVariationToFloa64(weekChange),
+			Name:         coin.Name,
+			Symbol:       coin.Symbol,
+			MarketCap:    int64(coin.Quotes[0].MarketCap),
+			PriceUSD:     coin.Quotes[0].Price,
+			PriceCLP:     usdToCLP(coin.Quotes[0].Price),
+			Supply:       int64(coin.TotalSupply),
+			Volume:       int64(coin.Quotes[0].Volume24H),
+			HourlyChange: coin.Quotes[0].PercentChange1H,
+			DailyChange:  coin.Quotes[0].PercentChange24H,
+			WeeklyChange: coin.Quotes[0].PercentChange7D,
 		})
-	})
+	}
 
 	return coins, nil
-}
-
-func usdPriceToInt64(price string) int64 {
-	price = strings.ReplaceAll(price, "$", "")
-	price = strings.ReplaceAll(price, ",", "")
-	price = strings.Split(price, ".")[0]
-
-	i, _ := strconv.ParseInt(price, 10, 64)
-	return i
-}
-
-func usdPriceToFloat64(price string) float64 {
-	price = strings.ReplaceAll(price, "$", "")
-	price = strings.ReplaceAll(price, ",", "")
-
-	f, _ := strconv.ParseFloat(price, 64)
-	return f
-}
-
-func supplyToInt64(supply string) int64 {
-	supply = strings.ReplaceAll(supply, ",", "")
-	supply = strings.Split(supply, " ")[0]
-
-	i, _ := strconv.ParseInt(supply, 10, 64)
-	return i
-}
-
-func percentageVariationToFloa64(variation string) float64 {
-	variation = strings.ReplaceAll(variation, "%", "")
-	res, _ := strconv.ParseFloat(variation, 64)
-	return res
 }
 
 func searchCoin(coins []Coin, patterns string) []Coin {
