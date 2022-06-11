@@ -4,3 +4,4 @@
 # Scrapping/Excessive amount of requests
 18.218.122.120
 34.199.255.59
+54.80.103.15
