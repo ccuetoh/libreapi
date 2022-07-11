@@ -101,7 +101,7 @@ func addEndpoints(e *gin.Engine) {
 
 	economyGroup := e.Group("/economy")
 	economyGroup.GET("/indicators", cache.CachePage(store, time.Hour, economy.BancoCentralIndicatorsHandler))
-	economyGroup.GET("/crypto", cache.CachePage(store, time.Minute*15, economy.CryptoHandler))
+	economyGroup.GET("/crypto", economy.CryptoHandler)
 	economyGroup.GET("/currencies", cache.CachePage(store, day/2, economy.CurrencyHandler))
 
 	weatherGroup := e.Group("/weather")
