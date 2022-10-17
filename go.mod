@@ -1,4 +1,4 @@
-module github.com/CamiloHernandez/libreapi/pkg
+module github.com/ccuetoh/libreapi
 
 go 1.15
 

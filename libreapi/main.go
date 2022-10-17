@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/CamiloHernandez/libreapi/pkg"
 	"os"
+
+	libreapi "github.com/ccuetoh/libreapi/pkg"
 )
 
 func main() {

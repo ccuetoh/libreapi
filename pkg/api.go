@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/CamiloHernandez/libreapi/pkg/economy"
-	"github.com/CamiloHernandez/libreapi/pkg/rut"
-	"github.com/CamiloHernandez/libreapi/pkg/weather"
+	"github.com/ccuetoh/libreapi/pkg/economy"
+	"github.com/ccuetoh/libreapi/pkg/rut"
+	"github.com/ccuetoh/libreapi/pkg/weather"
 
 	"github.com/gin-contrib/cache"
 	"github.com/gin-contrib/cache/persistence"
