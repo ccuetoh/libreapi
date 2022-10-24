@@ -3,9 +3,8 @@ package economy
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-
 	"io"
+	"io/ioutil"
 	"net/http"
 	"time"
 

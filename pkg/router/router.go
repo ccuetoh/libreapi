@@ -1,7 +1,6 @@
-package libreapi
+package router
 
 import (
-	"compress/gzip"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -35,7 +34,7 @@ func Start(port int, certs ...TLSPaths) error {
 	gin.SetMode(gin.ReleaseMode)
 	engine := gin.Default()
 
-	s := getDefaultHTTPServer(port)
+	s := newHTTPServer(port)
 
 	var tlsPaths TLSPaths
 	useTLS := false
@@ -45,7 +44,7 @@ func Start(port int, certs ...TLSPaths) error {
 	}
 
 	if useTLS {
-		tlsConfig := getSSLLabAConfig()
+		tlsConfig := newTLSConfig()
 		s.TLSConfig = tlsConfig
 	}
 
@@ -66,10 +65,7 @@ func Start(port int, certs ...TLSPaths) error {
 		}
 	}
 
-	useGzipMiddleware(engine, gzip.DefaultCompression)
-	useCORSAllowAllMiddleware(engine)
-	useBanlistMiddleware(engine, banlist)
-	addServerInfoMiddleware(engine)
+	useBanlist(engine, banlist)
 
 	err = useRateLimiter(engine, "1-S")
 	if err != nil {
@@ -95,7 +91,7 @@ func addEndpoints(e *gin.Engine) {
 	})
 
 	rutGroup := e.Group("/rut")
-	rutGroup.GET("/validate", cache.CachePage(store, day, rut.ValidateHandler))
+	rutGroup.GET("/validate")
 	rutGroup.GET("/digit", cache.CachePage(store, day, rut.DigitHandler))
 	rutGroup.GET("/activities", cache.CachePage(store, day, rut.SIIActivityHandler))
 

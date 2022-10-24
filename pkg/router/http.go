@@ -1,4 +1,4 @@
-package libreapi
+package router
 
 import (
 	"crypto/tls"
@@ -7,11 +7,10 @@ import (
 	"time"
 )
 
-func getSSLLabAConfig() *tls.Config {
+func newTLSConfig() *tls.Config {
 	return &tls.Config{
-		MinVersion:               tls.VersionTLS12,
-		CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
-		PreferServerCipherSuites: true,
+		MinVersion:       tls.VersionTLS12,
+		CurvePreferences: []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
 		CipherSuites: []uint16{
 			tls.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
 			tls.TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
@@ -27,7 +26,7 @@ func getSSLLabAConfig() *tls.Config {
 	}
 }
 
-func getDefaultHTTPServer(port int) *http.Server {
+func newHTTPServer(port int) *http.Server {
 	return &http.Server{
 		Addr:         fmt.Sprintf(":%d", port),
 		ReadTimeout:  3 * time.Second,

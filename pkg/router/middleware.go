@@ -1,24 +1,39 @@
-package libreapi
+package router
 
 import (
+	"github.com/newrelic/go-agent/v3/integrations/nrgin"
+	"github.com/newrelic/go-agent/v3/newrelic"
+	"github.com/pkg/errors"
+	"net/http"
+
+	"github.com/ccuetoh/libreapi/pkg"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/ulule/limiter/v3"
 	mgin "github.com/ulule/limiter/v3/drivers/middleware/gin"
 	"github.com/ulule/limiter/v3/drivers/store/memory"
-	"net/http"
 )
 
-func useCORSAllowAllMiddleware(e *gin.Engine) {
+func setupMiddlewares(e *gin.Engine, newRelicApp *newrelic.Application) error {
+	e.Use(nrgin.Middleware(newRelicApp))
+
+	e.Use(gzip.Gzip(gzip.DefaultCompression))
 	e.Use(cors.Default())
+	e.Use(serverInfoMiddleware)
+
+	// useBanlist(e, banlist)
+
+	err := useRateLimiter(e, "1-S")
+	if err != nil {
+		return errors.Wrap(err, "rate limiter")
+	}
+
+	return nil
 }
 
-func useGzipMiddleware(e *gin.Engine, compression int) {
-	e.Use(gzip.Gzip(compression))
-}
-
-func useBanlistMiddleware(e *gin.Engine, banlist []string) {
+func useBanlist(e *gin.Engine, banlist []string) {
 	e.Use(func(c *gin.Context) {
 		for _, ip := range banlist {
 			if ip == c.ClientIP() {
@@ -37,10 +52,8 @@ func useBanlistMiddleware(e *gin.Engine, banlist []string) {
 	})
 }
 
-func addServerInfoMiddleware(e *gin.Engine) {
-	e.Use(func(c *gin.Context) {
-		c.Header("Server", Descriptor)
-	})
+func serverInfoMiddleware(c *gin.Context) {
+	c.Header("Server", libreapi.Descriptor)
 }
 
 func useRateLimiter(e *gin.Engine, rate string) error {
@@ -50,10 +63,8 @@ func useRateLimiter(e *gin.Engine, rate string) error {
 	}
 
 	store := memory.NewStore()
-
 	instance := limiter.New(store, rate2)
 
 	e.Use(mgin.NewMiddleware(instance))
-
 	return nil
 }
