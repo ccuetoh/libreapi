@@ -11,8 +11,8 @@ import (
 	"github.com/ccuetoh/libreapi/pkg/rut"
 	"github.com/ccuetoh/libreapi/pkg/weather"
 
-	"github.com/gin-contrib/cache"
-	"github.com/gin-contrib/cache/persistence"
+	"github.com/chenyahui/gin-cache"
+	"github.com/chenyahui/gin-cache/persist"
 	"github.com/gin-gonic/gin"
 	contextNrLogrus "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/nrlogrus"
 	"github.com/newrelic/go-agent/v3/integrations/nrlogrus"
@@ -104,23 +104,22 @@ func newEngine(cfg *config.Config) *gin.Engine {
 }
 
 func addEndpoints(server *Server) {
-	day := time.Hour * 24
-	store := persistence.NewInMemoryStore(day)
+	store := persist.NewMemoryStore(time.Minute)
 
 	server.engine.GET("/ping", func(c *gin.Context) {
 		c.String(200, "pong")
 	})
 
 	rutGroup := server.engine.Group("/rut")
-	rutGroup.GET("/validate")
-	rutGroup.GET("/digit", cache.CachePage(store, day, rut.DigitHandler))
-	rutGroup.GET("/activities", cache.CachePage(store, day, rut.SIIActivityHandler))
+	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rut.ValidateHandler)
+	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rut.DigitHandler)
+	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rut.SIIActivityHandler)
 
 	economyGroup := server.engine.Group("/economy")
-	economyGroup.GET("/indicators", cache.CachePage(store, time.Hour, economy.BancoCentralIndicatorsHandler))
-	economyGroup.GET("/crypto", economy.CryptoHandler)
-	economyGroup.GET("/currencies", cache.CachePage(store, day/2, economy.CurrencyHandler))
+	economyGroup.GET("/indicators", cache.CacheByRequestPath(store, time.Hour), economy.BancoCentralIndicatorsHandler)
+	economyGroup.GET("/crypto", cache.CacheByRequestURI(store, time.Minute*5), economy.BancoCentralIndicatorsHandler)
+	economyGroup.GET("/currencies", cache.CacheByRequestURI(store, time.Hour), economy.CurrencyHandler)
 
 	weatherGroup := server.engine.Group("/weather")
-	weatherGroup.GET("/stations", cache.CachePage(store, time.Minute*30, weather.StationsHandler))
+	weatherGroup.GET("/stations", cache.CacheByRequestURI(store, time.Minute*30), weather.StationsHandler)
 }
