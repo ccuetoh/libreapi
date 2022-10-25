@@ -1,9 +1,10 @@
 package main
 
 import (
+	"log"
+
 	"github.com/ccuetoh/libreapi/pkg/config"
 	libreapi "github.com/ccuetoh/libreapi/pkg/server"
-	"log"
 
 	"github.com/spf13/viper"
 )
