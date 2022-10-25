@@ -7,9 +7,10 @@ type NewRelic struct {
 }
 
 type HTTP struct {
-	Address      string `mapstructure:"address"`
-	Port         string `mapstructure:"port"`
-	DebugEnabled bool   `mapstructure:"debug_enabled"`
+	Address             string `mapstructure:"address"`
+	Port                string `mapstructure:"port"`
+	DebugEnabled        bool   `mapstructure:"debug_enabled"`
+	ProxyClientIPHeader string `mapstructure:"proxy_client_ip_header"`
 }
 
 type Config struct {
