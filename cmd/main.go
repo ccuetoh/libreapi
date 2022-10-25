@@ -2,15 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/ccuetoh/libreapi/pkg/config"
 	libreapi "github.com/ccuetoh/libreapi/pkg/router"
-	"os"
+
+	"github.com/spf13/viper"
 )
 
 func main() {
-	server, err := libreapi.NewServer(
-		config.SetNewRelicLicence(""),
-		config.SetPort(8080))
+	viper.SetConfigFile("config.toml")
+	err := viper.ReadInConfig()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Unable to read config file: %v", err)
+		os.Exit(1)
+	}
+
+	server, err := libreapi.NewServer(config.FromViper())
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to start libreapi server: %v", err)

@@ -2,19 +2,19 @@ package config
 
 type NewRelic struct {
 	Licence              string `mapstructure:"licence"`
-	AppName              string `mapstructure:"app_name,omitempty"`
+	AppName              string `mapstructure:"app_name"`
 	LogForwardingEnabled bool   `mapstructure:"log_forwarding_enabled"`
 }
 
 type HTTP struct {
-	Address      string `mapstructure:"address,omitempty"`
-	Port         string `mapstructure:"port,omitempty"`
+	Address      string `mapstructure:"address"`
+	Port         string `mapstructure:"port"`
 	DebugEnabled bool   `mapstructure:"debug_enabled"`
 }
 
 type Config struct {
-	NewRelic NewRelic ``
-	HTTP     HTTP
+	NewRelic NewRelic `mapstructure:"new_relic"`
+	HTTP     HTTP     `mapstructure:"http"`
 }
 
 func Default() *Config {

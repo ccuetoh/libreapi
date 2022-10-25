@@ -8,7 +8,11 @@ import (
 
 type Option func(cfg *Config) *Config
 
-func FromViper(v *viper.Viper) Option {
+func FromViper() Option {
+	return FromViperInstance(viper.GetViper())
+}
+
+func FromViperInstance(v *viper.Viper) Option {
 	return func(cfg *Config) *Config {
 		err := v.Unmarshal(cfg)
 		if err != nil {
