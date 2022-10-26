@@ -1,6 +1,7 @@
-package router
+package server
 
 import (
+	"github.com/ccuetoh/libreapi/pkg/env"
 	"github.com/newrelic/go-agent/v3/integrations/nrgin"
 	"time"
 
@@ -16,22 +17,22 @@ import (
 
 func setupMiddlewares(server *Server) {
 	server.engine.Use(gin.Recovery())
-	server.engine.Use(nrgin.Middleware(server.newRelic))
-	server.engine.Use(loggingMiddleware(server))
+	server.engine.Use(nrgin.Middleware(server.env.NewRelic))
+	server.engine.Use(loggingMiddleware(server.env))
 	server.engine.Use(gzip.Gzip(gzip.DefaultCompression))
 	server.engine.Use(cors.Default())
 	server.engine.Use(serverInfoMiddleware())
-	server.engine.Use(rateLimiterMiddleware(server.cfg.HTTP.ProxyClientIPHeader))
+	server.engine.Use(rateLimiterMiddleware(server.env.Cfg.HTTP.ProxyClientIPHeader))
 }
 
-func loggingMiddleware(server *Server) gin.HandlerFunc {
+func loggingMiddleware(env *env.Env) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ip := c.ClientIP()
-		if server.cfg.HTTP.ProxyClientIPHeader != "" {
-			ip = c.GetHeader(server.cfg.HTTP.ProxyClientIPHeader)
+		if env.Cfg.HTTP.ProxyClientIPHeader != "" {
+			ip = c.GetHeader(env.Cfg.HTTP.ProxyClientIPHeader)
 		}
 
-		server.logEntry(c).Infof("%s %d %s %s", c.Request.Method, c.Writer.Status(), ip, c.Request.RequestURI)
+		env.Log(c).Infof("%s %d %s %s", c.Request.Method, c.Writer.Status(), ip, c.Request.RequestURI)
 	}
 }
 

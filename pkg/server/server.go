@@ -1,12 +1,11 @@
 package server
 
 import (
-	"context"
-	"github.com/newrelic/go-agent/v3/integrations/nrgin"
+	"github.com/ccuetoh/libreapi/pkg/config"
+	"github.com/ccuetoh/libreapi/pkg/env"
 	"net"
 	"time"
 
-	"github.com/ccuetoh/libreapi/pkg/config"
 	"github.com/ccuetoh/libreapi/pkg/economy"
 	"github.com/ccuetoh/libreapi/pkg/rut"
 	"github.com/ccuetoh/libreapi/pkg/weather"
@@ -22,10 +21,8 @@ import (
 )
 
 type Server struct {
-	engine   *gin.Engine
-	logger   *logrus.Logger
-	cfg      *config.Config
-	newRelic *newrelic.Application
+	engine *gin.Engine
+	env    *env.Env
 }
 
 func NewServer(cfgOpts ...config.Option) (*Server, error) {
@@ -46,10 +43,12 @@ func NewServer(cfgOpts ...config.Option) (*Server, error) {
 	}
 
 	server := &Server{
-		engine:   engine,
-		logger:   logger,
-		cfg:      cfg,
-		newRelic: newRelicApp,
+		engine: engine,
+		env: &env.Env{
+			Logger:   logger,
+			Cfg:      cfg,
+			NewRelic: newRelicApp,
+		},
 	}
 
 	setupMiddlewares(server)
@@ -59,26 +58,7 @@ func NewServer(cfgOpts ...config.Option) (*Server, error) {
 }
 
 func (s *Server) Start() error {
-	return s.engine.Run(net.JoinHostPort(s.cfg.HTTP.Address, s.cfg.HTTP.Port))
-}
-
-func (s *Server) logEntry(c *gin.Context) *logrus.Entry {
-	txn := nrgin.Transaction(c)
-	ctx := newrelic.NewContext(context.Background(), txn)
-
-	ip := c.ClientIP()
-	if s.cfg.HTTP.ProxyClientIPHeader != "" {
-		ip = c.GetHeader(s.cfg.HTTP.ProxyClientIPHeader)
-	}
-
-	fields := logrus.Fields{
-		"client":      c.GetHeader("User-Agent"),
-		"method":      c.Request.Method,
-		"request_uri": c.Request.RequestURI,
-		"ip":          ip,
-	}
-
-	return s.logger.WithContext(ctx).WithFields(fields)
+	return s.engine.Run(net.JoinHostPort(s.env.Cfg.HTTP.Address, s.env.Cfg.HTTP.Port))
 }
 
 func newNewRelic(cfg *config.Config, logger *logrus.Logger) (*newrelic.Application, error) {
@@ -87,7 +67,7 @@ func newNewRelic(cfg *config.Config, logger *logrus.Logger) (*newrelic.Applicati
 		newrelic.ConfigLicense(cfg.NewRelic.Licence),
 		newrelic.ConfigAppLogForwardingEnabled(cfg.NewRelic.LogForwardingEnabled),
 		func(config *newrelic.Config) {
-			logrus.SetLevel(logrus.DebugLevel)
+			logger.SetLevel(logrus.InfoLevel)
 			config.Logger = nrlogrus.Transform(logger)
 		},
 	)
@@ -111,13 +91,13 @@ func addEndpoints(server *Server) {
 	})
 
 	rutGroup := server.engine.Group("/rut")
-	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rut.ValidateHandler)
-	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rut.DigitHandler)
-	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rut.SIIActivityHandler)
+	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rut.ValidateHandler(server.env))
+	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rut.DigitHandler(server.env))
+	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rut.SIIActivityHandler(server.env))
 
 	economyGroup := server.engine.Group("/economy")
 	economyGroup.GET("/indicators", cache.CacheByRequestPath(store, time.Hour), economy.BancoCentralIndicatorsHandler)
-	economyGroup.GET("/crypto", cache.CacheByRequestURI(store, time.Minute*5), economy.BancoCentralIndicatorsHandler)
+	economyGroup.GET("/crypto", cache.CacheByRequestURI(store, time.Minute*5), economy.CryptoHandler)
 	economyGroup.GET("/currencies", cache.CacheByRequestURI(store, time.Hour), economy.CurrencyHandler)
 
 	weatherGroup := server.engine.Group("/weather")

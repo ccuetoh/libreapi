@@ -1,5 +1,10 @@
 package config
 
+type Config struct {
+	NewRelic NewRelic `mapstructure:"new_relic"`
+	HTTP     HTTP     `mapstructure:"http"`
+}
+
 type NewRelic struct {
 	Licence              string `mapstructure:"licence"`
 	AppName              string `mapstructure:"app_name"`
@@ -11,11 +16,6 @@ type HTTP struct {
 	Port                string `mapstructure:"port"`
 	DebugEnabled        bool   `mapstructure:"debug_enabled"`
 	ProxyClientIPHeader string `mapstructure:"proxy_client_ip_header"`
-}
-
-type Config struct {
-	NewRelic NewRelic `mapstructure:"new_relic"`
-	HTTP     HTTP     `mapstructure:"http"`
 }
 
 func Default() *Config {
