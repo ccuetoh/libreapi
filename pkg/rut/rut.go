@@ -74,12 +74,12 @@ func (r RUT) GetVDString() string {
 	val := strconv.Itoa(r[len(r)-1])
 	switch val {
 	case "10":
-		val = "K"
+		return "K"
 	case "11":
-		val = "0"
+		return "0"
+	default:
+		return val
 	}
-
-	return val
 }
 
 func (r RUT) IsValid() bool {

@@ -1,115 +1,143 @@
 package rut
 
 import (
+	"github.com/ccuetoh/libreapi/pkg/env"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
-func ValidateHandler(ctx *gin.Context) {
-	rut := ctx.Query("rut")
-	if rut == "" {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "no rut was provided",
+func ValidateHandler(env *env.Env) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		rutStr := c.Query("rut")
+		if rutStr == "" {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "no rut was provided",
+				},
+			})
+
+			env.Log(c).Trace("no rut")
+			return
+		}
+
+		rut, err := ParseRUT(rutStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "the provided rut is invalid",
+				},
+			})
+
+			env.Log(c).Tracef("invalid rut: %v", err)
+			return
+		}
+
+		valid := rut.IsValid()
+		c.JSON(http.StatusOK, gin.H{
+			"status": "success",
+			"data": gin.H{
+				"valid": valid,
+				"rut":   rut.PrettyString(),
 			},
 		})
-		return
-	}
 
-	rut2, err := ParseRUT(rut)
-	if err != nil {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "the provided rut is invalid",
-			},
-		})
-		return
+		env.Log(c).Trace("ok")
 	}
-
-	valid := rut2.IsValid()
-	ctx.JSON(200, gin.H{
-		"status": "success",
-		"data": gin.H{
-			"valid": valid,
-			"rut":   rut2.PrettyString(),
-		},
-	})
 }
 
-func DigitHandler(ctx *gin.Context) {
-	rut := ctx.Query("rut")
-	if rut == "" {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "no rut was provided",
+func DigitHandler(env *env.Env) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		rutStr := c.Query("rut")
+		if rutStr == "" {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "no rut was provided",
+				},
+			})
+
+			env.Log(c).Trace("no rut")
+			return
+		}
+
+		rut, err := ParseRUT(rutStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "the provided rut is invalid",
+				},
+			})
+
+			env.Log(c).Tracef("invalid rut: %v", err)
+			return
+		}
+
+		digit := rut.CalculateVD(false)
+		c.JSON(http.StatusOK, gin.H{
+			"status": "success",
+			"data": gin.H{
+				"digit": VDToString(digit),
+				"rut":   append(rut, digit).PrettyString(),
 			},
 		})
-		return
-	}
 
-	rut2, err := ParseRUT(rut)
-	if err != nil {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "the provided rut is invalid",
-			},
-		})
-		return
+		env.Log(c).Trace("ok")
 	}
-
-	digit := rut2.CalculateVD(false)
-	ctx.JSON(200, gin.H{
-		"status": "success",
-		"data": gin.H{
-			"digit": VDToString(digit),
-			"rut":   append(rut2, digit).PrettyString(),
-		},
-	})
 }
 
-func SIIActivityHandler(ctx *gin.Context) {
-	rut := ctx.Query("rut")
-	if rut == "" {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "no rut was provided",
+func SIIActivityHandler(env *env.Env) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		rutStr := c.Query("rut")
+		if rutStr == "" {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "no rut was provided",
+				},
+			})
+
+			env.Log(c).Trace("no rut")
+			return
+		}
+
+		rut, err := ParseRUT(rutStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "fail",
+				"errors": gin.H{
+					"rut": "the provided rut is invalid",
+				},
+			})
+
+			env.Log(c).Tracef("invalid rut: %v", err)
+			return
+		}
+
+		details, err := GetSIIDetails(rut)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"status": "error",
+				"errors": gin.H{
+					"fetch error": "unable to fetch the data",
+				},
+			})
+
+			env.Log(c).Errorf("unable to fetch data: %v", err)
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"status": "success",
+			"data": gin.H{
+				"rut":        rut.PrettyString(),
+				"name":       details.Name,
+				"activities": details.Activities,
 			},
 		})
-		return
-	}
 
-	rut2, err := ParseRUT(rut)
-	if err != nil {
-		ctx.JSON(400, gin.H{
-			"status": "fail",
-			"errors": gin.H{
-				"rut": "the provided rut is invalid",
-			},
-		})
-		return
+		env.Log(c).Trace("ok")
 	}
-
-	details, err := GetSIIDetails(rut2)
-	if err != nil {
-		ctx.JSON(500, gin.H{
-			"status": "error",
-			"errors": gin.H{
-				"fetch error": "unable to fetch the data",
-			},
-		})
-		return
-	}
-
-	ctx.JSON(200, gin.H{
-		"status": "success",
-		"data": gin.H{
-			"rut":        rut2.PrettyString(),
-			"name":       details.Name,
-			"activities": details.Activities,
-		},
-	})
 }
