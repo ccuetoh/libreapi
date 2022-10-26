@@ -2,3 +2,4 @@
 certs
 bin
 *.log
+/build/
