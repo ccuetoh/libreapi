@@ -110,7 +110,7 @@ func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
 
 	doc, err := goquery.NewDocumentFromReader(r)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "unable to create document")
 	}
 
 	name := clean(doc.Find("#contenedor > div:nth-child(4)"))
