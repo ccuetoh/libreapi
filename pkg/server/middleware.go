@@ -17,16 +17,23 @@ import (
 
 func setupMiddlewares(server *Server) {
 	server.engine.Use(gin.Recovery())
-	server.engine.Use(nrgin.Middleware(server.env.NewRelic))
-	server.engine.Use(loggingMiddleware(server.env))
-	server.engine.Use(gzip.Gzip(gzip.DefaultCompression))
-	server.engine.Use(cors.Default())
-	server.engine.Use(serverInfoMiddleware())
-	server.engine.Use(rateLimiterMiddleware(server.env.Cfg.HTTP.ProxyClientIPHeader))
+
+	if server.env.NewRelic != nil {
+		server.engine.Use(nrgin.Middleware(server.env.NewRelic))
+	}
+
+	server.engine.Use(
+		loggingMiddleware(server.env),
+		gzip.Gzip(gzip.DefaultCompression),
+		cors.Default(),
+		serverInfoMiddleware(),
+		rateLimiterMiddleware(server.env.Cfg.HTTP.ProxyClientIPHeader))
 }
 
 func loggingMiddleware(env *env.Env) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		c.Next()
+
 		ip := c.ClientIP()
 		if env.Cfg.HTTP.ProxyClientIPHeader != "" {
 			ip = c.GetHeader(env.Cfg.HTTP.ProxyClientIPHeader)
