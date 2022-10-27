@@ -6,18 +6,34 @@ import (
 	"net/http"
 )
 
-func ValidateHandler(env *env.Env) gin.HandlerFunc {
+type Service interface {
+	GetProfile(rut RUT) (*SIIProfile, error)
+}
+
+type Handler struct {
+	env     *env.Env
+	service Service
+}
+
+func NewHandler(env *env.Env, service Service) *Handler {
+	return &Handler{
+		env:     env,
+		service: service,
+	}
+}
+
+func (h *Handler) Validate() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		rutStr := c.Query("rut")
 		if rutStr == "" {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "no rut was provided",
 				},
 			})
 
-			env.Log(c).Trace("no rut")
+			h.env.Log(c).Trace("no rut")
 			return
 		}
 
@@ -25,12 +41,12 @@ func ValidateHandler(env *env.Env) gin.HandlerFunc {
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "the provided rut is invalid",
 				},
 			})
 
-			env.Log(c).Tracef("invalid rut: %v", err)
+			h.env.Log(c).Tracef("invalid rut: %v", err)
 			return
 		}
 
@@ -43,22 +59,22 @@ func ValidateHandler(env *env.Env) gin.HandlerFunc {
 			},
 		})
 
-		env.Log(c).Trace("ok")
+		h.env.Log(c).Trace("ok")
 	}
 }
 
-func DigitHandler(env *env.Env) gin.HandlerFunc {
+func (h *Handler) VD() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		rutStr := c.Query("rut")
 		if rutStr == "" {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "no rut was provided",
 				},
 			})
 
-			env.Log(c).Trace("no rut")
+			h.env.Log(c).Trace("no rut")
 			return
 		}
 
@@ -66,12 +82,12 @@ func DigitHandler(env *env.Env) gin.HandlerFunc {
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "the provided rut is invalid",
 				},
 			})
 
-			env.Log(c).Tracef("invalid rut: %v", err)
+			h.env.Log(c).Tracef("invalid rut: %v", err)
 			return
 		}
 
@@ -84,22 +100,22 @@ func DigitHandler(env *env.Env) gin.HandlerFunc {
 			},
 		})
 
-		env.Log(c).Trace("ok")
+		h.env.Log(c).Trace("ok")
 	}
 }
 
-func SIIActivityHandler(env *env.Env) gin.HandlerFunc {
+func (h *Handler) Activity() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		rutStr := c.Query("rut")
 		if rutStr == "" {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "no rut was provided",
 				},
 			})
 
-			env.Log(c).Trace("no rut")
+			h.env.Log(c).Trace("no rut")
 			return
 		}
 
@@ -107,25 +123,23 @@ func SIIActivityHandler(env *env.Env) gin.HandlerFunc {
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"status": "fail",
-				"errors": gin.H{
+				"data": gin.H{
 					"rut": "the provided rut is invalid",
 				},
 			})
 
-			env.Log(c).Tracef("invalid rut: %v", err)
+			h.env.Log(c).Tracef("invalid rut: %v", err)
 			return
 		}
 
-		details, err := GetSIIDetails(rut)
+		details, err := h.service.GetProfile(rut)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
-				"status": "error",
-				"errors": gin.H{
-					"fetch error": "unable to fetch the data",
-				},
+				"status":  "error",
+				"message": "unable to fetch the data",
 			})
 
-			env.Log(c).Errorf("unable to fetch data: %v", err)
+			h.env.Log(c).Errorf("unable to fetch data: %v", err)
 			return
 		}
 
@@ -138,6 +152,6 @@ func SIIActivityHandler(env *env.Env) gin.HandlerFunc {
 			},
 		})
 
-		env.Log(c).Trace("ok")
+		h.env.Log(c).Trace("ok")
 	}
 }
