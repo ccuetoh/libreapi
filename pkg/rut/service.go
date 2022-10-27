@@ -3,6 +3,8 @@ package rut
 import (
 	"encoding/base64"
 	"fmt"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 	"io"
 	"net/http"
 	"net/url"
@@ -29,7 +31,7 @@ func NewDefaultService() *DefaultService {
 
 type SIIProfile struct {
 	Name       string
-	Activities []Activity
+	Activities []*Activity
 }
 
 type Activity struct {
@@ -91,16 +93,16 @@ func (s *DefaultService) getCaptcha() (code string, captcha string, err error) {
 		return "", "", errors.Wrap(err, "unable unmarshall response")
 	}
 
-	if len(data.Code) < 40 {
-		return "", "", errors.New("captcha code is too short")
-	}
-
-	codeDecoded, err := base64.StdEncoding.DecodeString(code)
+	codeDecoded, err := base64.StdEncoding.DecodeString(data.Code)
 	if err != nil {
 		return "", "", errors.Wrap(err, "unable to decode captcha")
 	}
 
-	return code, string(codeDecoded)[36:40], nil
+	if len(codeDecoded) < 40 {
+		return "", "", errors.New("captcha code is too short")
+	}
+
+	return data.Code, string(codeDecoded)[36:40], nil
 }
 
 func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
@@ -111,64 +113,37 @@ func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
 		return nil, err
 	}
 
-	var name string
-	doc.Find("html").Find("body").Find("div").Find("div").Each(func(i int, s *goquery.Selection) {
-		if i != 4 {
+	name := clean(doc.Find("#contenedor > div:nth-child(4)"))
+	if name == "**" {
+		// No record found
+		return &SIIProfile{}, nil
+	}
+
+	var activities []*Activity
+	doc.Find("table.tabla:nth-child(27) > tbody:nth-child(1) > tr:nth-child(2)").Each(func(_ int, s *goquery.Selection) {
+		code, err := strconv.Atoi(clean(s.Find("td:nth-child(2)")))
+		if err != nil {
 			return
 		}
 
-		name = strings.TrimSpace(strings.Title(strings.ToLower(s.Text())))
-	})
-
-	var activities []Activity
-	doc.Find("html").Find("body").Find("div").Find("table").Each(func(i1 int, s *goquery.Selection) {
-		if i1 != 0 {
+		date, err := time.Parse(layout, clean(s.Find("td:nth-child(5)")))
+		if err != nil {
 			return
 		}
 
-		var activity Activity
-		s.Find("tbody").Find("tr").Each(func(i2 int, s *goquery.Selection) {
-			if i2 == 0 {
-				return
-			}
-
-			s.Find("td").Each(func(i3 int, s *goquery.Selection) {
-				switch i3 {
-				case 0:
-					activity.Name = cleanHTMLText(s.Text())
-				case 1:
-					code, err := strconv.Atoi(cleanHTMLText(s.Text()))
-					if err != nil {
-						return
-					}
-
-					activity.Code = code
-				case 2:
-					activity.Category = cleanHTMLText(s.Text())
-				case 3:
-					activity.SubjectToVAT = cleanHTMLText(s.Text()) == "Si"
-				case 4:
-					date, err := time.Parse(layout, s.Text())
-					if err != nil {
-						return
-					}
-
-					activity.Date = date
-				}
-
-			})
-
-			activities = append(activities, activity)
+		activities = append(activities, &Activity{
+			Name:         clean(s.Find("td:nth-child(1)")),
+			Code:         code,
+			Category:     clean(s.Find("td:nth-child(3)")),
+			SubjectToVAT: clean(s.Find("td:nth-child(4)")) == "Si",
+			Date:         date,
 		})
 	})
-
-	if name == "**" {
-		name = "" // No record found
-	}
 
 	return &SIIProfile{Name: name, Activities: activities}, nil
 }
 
-func cleanHTMLText(text string) string {
-	return strings.Trim(strings.TrimSpace(strings.Title(strings.ToLower(text))), "\n\t")
+func clean(s *goquery.Selection) string {
+	caser := cases.Title(language.LatinAmericanSpanish)
+	return caser.String(strings.Trim(s.Text(), "\n\t "))
 }
