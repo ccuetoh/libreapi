@@ -92,15 +92,15 @@ func addEndpoints(server *Server) {
 	rutHandler := rut.NewHandler(server.env, rut.NewDefaultService())
 
 	rutGroup := server.engine.Group("/rut")
-	rutGroup.Use()
-	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rutHandler.Validate())
-	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rutHandler.VD())
-	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rutHandler.Activity())
+	rutGroup.Use(cache.CacheByRequestURI(store, time.Hour))
+	rutGroup.GET("/validate", rutHandler.Validate())
+	rutGroup.GET("/digit", rutHandler.VD())
+	rutGroup.GET("/activities", rutHandler.Activity())
 
 	economyGroup := server.engine.Group("/economy")
-	economyGroup.GET("/indicators", cache.CacheByRequestPath(store, time.Hour), economy.BancoCentralIndicatorsHandler)
-	economyGroup.GET("/crypto", cache.CacheByRequestURI(store, time.Minute*5), economy.CryptoHandler)
-	economyGroup.GET("/currencies", cache.CacheByRequestURI(store, time.Hour), economy.CurrencyHandler)
+	economyGroup.Use(cache.CacheByRequestURI(store, time.Minute*5))
+	economyGroup.GET("/indicators", economy.BancoCentralIndicatorsHandler)
+	economyGroup.GET("/currencies", economy.CurrencyHandler)
 
 	weatherGroup := server.engine.Group("/weather")
 	weatherGroup.GET("/stations", cache.CacheByRequestURI(store, time.Minute*30), weather.StationsHandler)
