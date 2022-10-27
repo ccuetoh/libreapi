@@ -51,8 +51,8 @@ func serverInfoMiddleware() gin.HandlerFunc {
 
 func rateLimiterMiddleware(ipHeader string) gin.HandlerFunc {
 	rate := limiter.Rate{
-		Period: time.Minute,
-		Limit:  20,
+		Period: time.Hour,
+		Limit:  1500,
 	}
 
 	store := memory.NewStore()
