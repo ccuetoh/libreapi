@@ -3,6 +3,7 @@ package server
 import (
 	"github.com/ccuetoh/libreapi/pkg/config"
 	"github.com/ccuetoh/libreapi/pkg/env"
+	contextNrLogrus "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/nrlogrus"
 	"net"
 	"time"
 
@@ -13,7 +14,6 @@ import (
 	"github.com/chenyahui/gin-cache"
 	"github.com/chenyahui/gin-cache/persist"
 	"github.com/gin-gonic/gin"
-	contextNrLogrus "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/nrlogrus"
 	"github.com/newrelic/go-agent/v3/integrations/nrlogrus"
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/pkg/errors"
@@ -29,21 +29,20 @@ func NewServer(cfgOpts ...config.Option) (*Server, error) {
 	cfg := config.Build(cfgOpts...)
 	logger := logrus.New()
 
-	newRelicApp, err := newNewRelic(cfg, logger)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to create NewRelic instance")
-	}
+	var newRelicApp *newrelic.Application
+	if cfg.NewRelic.Licence != "" {
+		var err error
+		newRelicApp, err = newNewRelic(cfg, logger)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to create NewRelic instance")
+		}
 
-	formatter := contextNrLogrus.NewFormatter(newRelicApp, &logrus.TextFormatter{})
-	logger.SetFormatter(formatter)
-
-	engine := newEngine(cfg)
-	if err != nil {
-		return nil, errors.Wrap(err, "unable to create Gin engine")
+		formatter := contextNrLogrus.NewFormatter(newRelicApp, &logrus.TextFormatter{})
+		logger.SetFormatter(formatter)
 	}
 
 	server := &Server{
-		engine: engine,
+		engine: newEngine(cfg),
 		env: &env.Env{
 			Logger:   logger,
 			Cfg:      cfg,
@@ -90,10 +89,13 @@ func addEndpoints(server *Server) {
 		c.String(200, "pong")
 	})
 
+	rutHandler := rut.NewHandler(server.env, rut.NewDefaultService())
+
 	rutGroup := server.engine.Group("/rut")
-	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rut.ValidateHandler(server.env))
-	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rut.DigitHandler(server.env))
-	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rut.SIIActivityHandler(server.env))
+	rutGroup.Use()
+	rutGroup.GET("/validate", cache.CacheByRequestURI(store, time.Hour), rutHandler.Validate())
+	rutGroup.GET("/digit", cache.CacheByRequestURI(store, time.Hour), rutHandler.VD())
+	rutGroup.GET("/activities", cache.CacheByRequestURI(store, time.Hour), rutHandler.Activity())
 
 	economyGroup := server.engine.Group("/economy")
 	economyGroup.GET("/indicators", cache.CacheByRequestPath(store, time.Hour), economy.BancoCentralIndicatorsHandler)

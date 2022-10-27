@@ -17,6 +17,10 @@ type Env struct {
 }
 
 func (e *Env) Log(c *gin.Context) *logrus.Entry {
+	if e.NewRelic == nil {
+		return e.Logger.WithContext(context.Background())
+	}
+
 	txn := nrgin.Transaction(c)
 	ctx := newrelic.NewContext(context.Background(), txn)
 
