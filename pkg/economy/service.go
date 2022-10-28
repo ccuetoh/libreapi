@@ -11,7 +11,7 @@ type DefaultService struct {
 	client *http.Client
 }
 
-func NewDefaultService() *DefaultService {
+func NewService() *DefaultService {
 	return &DefaultService{
 		client: &http.Client{
 			Timeout: 3 * time.Second,
