@@ -2,6 +2,7 @@ package economy
 
 import (
 	"fmt"
+	"github.com/PuerkitoBio/goquery"
 	"github.com/pkg/errors"
 	"net/http"
 	"time"
@@ -11,10 +12,10 @@ type DefaultService struct {
 	client *http.Client
 }
 
-func NewService() *DefaultService {
+func NewDefaultService() *DefaultService {
 	return &DefaultService{
 		client: &http.Client{
-			Timeout: 3 * time.Second,
+			Timeout: 5 * time.Second,
 		},
 	}
 }
@@ -62,4 +63,23 @@ func (s *DefaultService) GetCurrencies() ([]*Currency, error) {
 	}
 
 	return currencies, nil
+}
+
+func (s *DefaultService) getDailyCurrenciesURL() (string, error) {
+	resp, err := s.client.Get("https://si3.bcentral.cl/Indicadoressiete/secure/IndicadoresDiarios.aspx")
+	if err != nil {
+		return "", errors.Wrap(err, "unable to execute request")
+	}
+
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
+	if err != nil {
+		return "", err
+	}
+
+	url, exists := doc.Find("#hypLnk1_8").Attr("href")
+	if !exists {
+		return "", errors.New("no url found")
+	}
+
+	return "https://si3.bcentral.cl/Indicadoressiete/secure/" + url, nil
 }

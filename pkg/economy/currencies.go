@@ -11,7 +11,6 @@ import (
 	"golang.org/x/text/unicode/norm"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/pkg/errors"
 	"github.com/sahilm/fuzzy"
 )
 
@@ -21,8 +20,8 @@ var iso4217 = map[string]string{
 	"Bolívar fuerte venezolano":        "VEF",
 	"Boliviano":                        "BOB",
 	"Colón costarricense":              "CRC",
-	"Corona checa":                     "CZK",
-	"Corona danesa":                    "DKK",
+	"Corona Checa":                     "CZK",
+	"Corona Danesa":                    "DKK",
 	"Corona islandesa":                 "ISK",
 	"Corona noruega":                   "NOK",
 	"Corona sueca":                     "SEK",
@@ -43,7 +42,7 @@ var iso4217 = map[string]string{
 	"Forint húngaro":                   "HUF",
 	"Franco de la Polinesia Francesa":  "XPF",
 	"Franco suizo":                     "CHF",
-	"Guaraní paraguayo":                "PYG",
+	"Guaraní  paraguayo":               "PYG",
 	"Hryvnia ucraniano":                "UAH",
 	"Leu rumano":                       "RON",
 	"Libra egipcia":                    "EGP",
@@ -58,11 +57,12 @@ var iso4217 = map[string]string{
 	"Peso mexicano":                    "MXN",
 	"Peso uruguayo":                    "UYU",
 	"Quetzal guatemalteco":             "GTQ",
-	"Rand surafricano":                 "ZAR",
-	"Real Brasileño":                   "BRL",
+	"Rand sudafricano":                 "ZAR",
+	"Real brasileño":                   "BRL",
 	"Rial iraní":                       "IRR",
 	"Rial saudita":                     "SAR",
 	"Ringgit malasio":                  "MYR",
+	"Riyal Catarí":                     "QAR",
 	"Rublo ruso":                       "RUB",
 	"Rupia de Indonesia":               "IDR",
 	"Rupia india":                      "INR",
@@ -81,25 +81,6 @@ type Currency struct {
 	ExchangeRate float64 `json:"exchange_rate"`
 }
 
-func (s *DefaultService) getDailyCurrenciesURL() (string, error) {
-	resp, err := s.client.Get("https://si3.bcentral.cl/Indicadoressiete/secure/IndicadoresDiarios.aspx")
-	if err != nil {
-		return "", errors.Wrap(err, "unable to execute request")
-	}
-
-	doc, err := goquery.NewDocumentFromReader(resp.Body)
-	if err != nil {
-		return "", err
-	}
-
-	url, exists := doc.Find("#hypLnk1_11").Attr("href")
-	if !exists {
-		return "", errors.New("no url found")
-	}
-
-	return "https://si3.bcentral.cl/Indicadoressiete/secure/" + url, nil
-}
-
 func parseCurrenciesHTML(r io.ReadCloser) (currencies []*Currency, err error) {
 	doc, err := goquery.NewDocumentFromReader(r)
 	if err != nil {
@@ -109,9 +90,12 @@ func parseCurrenciesHTML(r io.ReadCloser) (currencies []*Currency, err error) {
 	doc.Find("tr").EachWithBreak(func(_ int, s *goquery.Selection) bool {
 		name := strings.TrimSpace(s.Children().Get(0).FirstChild.Data)
 
-		rate, err := parseCurrency(s.Children().Get(1).FirstChild.Data)
+		rateStr := s.Children().Get(1).FirstChild.Data
+
+		var rate float64
+		rate, err = parseCurrency(rateStr)
 		if err != nil {
-			err = errors.New("unable to parse currency")
+			err = fmt.Errorf("unable to parse currency '%s' with value '%s", name, rateStr)
 			return false
 		}
 
@@ -129,6 +113,10 @@ func parseCurrenciesHTML(r io.ReadCloser) (currencies []*Currency, err error) {
 
 		return true
 	})
+
+	if err != nil {
+		return nil, err
+	}
 
 	return
 }

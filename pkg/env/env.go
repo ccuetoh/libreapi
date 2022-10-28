@@ -26,3 +26,10 @@ func (e *Env) Log(c *gin.Context) *logrus.Entry {
 
 	return e.Logger.WithContext(ctx)
 }
+
+func NewTestEnv() *Env {
+	return &Env{
+		Logger: logrus.New(),
+		Cfg:    config.Default(),
+	}
+}
