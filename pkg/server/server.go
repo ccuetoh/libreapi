@@ -91,6 +91,9 @@ func addEndpoints(server *Server) {
 
 	rutHandler := rut.NewHandler(server.env, rut.NewDefaultService())
 	rutGroup := server.engine.Group("/rut")
+
+	rutGroup.GET("/random", rutHandler.Generate())
+
 	rutGroup.Use(cache.CacheByRequestURI(store, time.Hour))
 	rutGroup.GET("/validate", rutHandler.Validate())
 	rutGroup.GET("/digit", rutHandler.VD())
@@ -98,12 +101,14 @@ func addEndpoints(server *Server) {
 
 	economyHandler := economy.NewHandler(server.env, economy.NewService())
 	economyGroup := server.engine.Group("/economy")
+
 	economyGroup.Use(cache.CacheByRequestURI(store, time.Minute*5))
 	economyGroup.GET("/indicators", economyHandler.Indicators())
 	economyGroup.GET("/currencies", economyHandler.Currencies())
 
 	weatherHandler := weather.NewHandler(server.env, weather.NewService())
 	weatherGroup := server.engine.Group("/weather")
+
 	weatherGroup.Use(cache.CacheByRequestURI(store, time.Minute*5))
 	weatherGroup.GET("/stations", weatherHandler.Stations())
 }

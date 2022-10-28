@@ -49,8 +49,8 @@ func (s *DefaultService) GetProfile(rut RUT) (*SIIProfile, error) {
 	}
 
 	form := url.Values{}
-	form.Add("RUT", rut.String()[:len(rut)-1])
-	form.Add("DV", VDToString(rut[len(rut)-1]))
+	form.Add("RUT", rut.String()[:len(rut.Digits)-1])
+	form.Add("DV", rut.VD.String())
 	form.Add("PRG", "STC")
 	form.Add("OPC", "NOR")
 	form.Add("txt_captcha", code) // code is expected in "txt_captcha" and captcha in "txt_code"
