@@ -1,0 +1,3782 @@
+[
+  {
+    "code": 180005,
+    "name": "Chacalluta, Arica Ap.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 18.4,
+    "humidity": 0.59,
+    "pressure_hpa": 1010.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:49:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T21:24:00-03:00",
+        "temperature": 15.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:23:00-03:00",
+        "temperature": 19
+      },
+      "minimum": {
+        "time": "2022-10-28T20:57:00-03:00",
+        "temperature": 16
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 180017,
+    "name": "Putre",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 14.1,
+    "humidity": 0.11,
+    "pressure_hpa": 669.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:56:00-03:00",
+        "temperature": 3.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:50:00-03:00",
+        "temperature": 16.3
+      },
+      "minimum": {
+        "time": "2022-10-28T06:57:00-03:00",
+        "temperature": 4.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 180018,
+    "name": "Defensa Civil, Arica",
+    "operational": false
+  },
+  {
+    "code": 180042,
+    "name": "Cerro Sombrero, Arica",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 19.9,
+    "humidity": 0.54,
+    "pressure_hpa": 1003.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:21:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:28:00-03:00",
+        "temperature": 15
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:00:00-03:00",
+        "temperature": 21.6
+      },
+      "minimum": {
+        "time": "2022-10-28T20:48:00-03:00",
+        "temperature": 15.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 200006,
+    "name": "Diego Aracena Iquique Ap.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 18.5,
+    "humidity": 0.54,
+    "pressure_hpa": 1011.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:09:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:26:00-03:00",
+        "temperature": 15
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:36:00-03:00",
+        "temperature": 19.5
+      },
+      "minimum": {
+        "time": "2022-10-28T07:17:00-03:00",
+        "temperature": 14.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 200010,
+    "name": "UNAP (Universidad Arturo Prat), Iquique",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 16.9,
+    "humidity": 0.67,
+    "pressure_hpa": 1014.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:09:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T01:37:00-03:00",
+        "temperature": 15.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:16:00-03:00",
+        "temperature": 18.7
+      },
+      "minimum": {
+        "time": "2022-10-28T07:15:00-03:00",
+        "temperature": 14.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 210901,
+    "name": "Ollagüe",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 15.9,
+    "humidity": 0.04,
+    "pressure_hpa": 656.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:13:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:50:00-03:00",
+        "temperature": -6.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:47:00-03:00",
+        "temperature": 18.9
+      },
+      "minimum": {
+        "time": "2022-10-28T07:13:00-03:00",
+        "temperature": -13.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 220002,
+    "name": "El Loa, Calama Ad.",
+    "operational": false
+  },
+  {
+    "code": 230002,
+    "name": "Universidad Católica del Norte, Antofagasta",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 16.7,
+    "humidity": 0.6,
+    "pressure_hpa": 1013.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:46:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:50:00-03:00",
+        "temperature": 12.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:16:00-03:00",
+        "temperature": 17.9
+      },
+      "minimum": {
+        "time": "2022-10-28T06:48:00-03:00",
+        "temperature": 13.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 230004,
+    "name": "Toconao",
+    "operational": false
+  },
+  {
+    "code": 230021,
+    "name": "Llano de Chajnantor, observatorio APEX",
+    "operational": true,
+    "last_report": "2022-10-29T13:20:00-03:00",
+    "temperature": -0.8,
+    "humidity": 0.05,
+    "pressure_hpa": 554.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:47:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T02:39:00-03:00",
+        "temperature": -11.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:56:00-03:00",
+        "temperature": 1
+      },
+      "minimum": {
+        "time": "2022-10-28T04:17:00-03:00",
+        "temperature": -10.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 230022,
+    "name": "Mejillones",
+    "operational": false
+  },
+  {
+    "code": 240005,
+    "name": "Cerro Paranal, observatorio astronómico",
+    "operational": true,
+    "last_report": "2022-10-29T13:25:00-03:00",
+    "temperature": 14.3,
+    "humidity": 0.08,
+    "pressure_hpa": 743.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:01:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:59:00-03:00",
+        "temperature": 8.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T10:12:00-03:00",
+        "temperature": 14.5
+      },
+      "minimum": {
+        "time": "2022-10-28T06:12:00-03:00",
+        "temperature": 8.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 250005,
+    "name": "Taltal",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 15.4,
+    "humidity": 0.71,
+    "pressure_hpa": 1014.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:11:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:12:00-03:00",
+        "temperature": 13.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:55:00-03:00",
+        "temperature": 18.9
+      },
+      "minimum": {
+        "time": "2022-10-28T20:58:00-03:00",
+        "temperature": 15.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 270001,
+    "name": "Mataveri  Isla de Pascua Ap.",
+    "operational": false
+  },
+  {
+    "code": 270008,
+    "name": "Desierto de Atacama, Caldera  Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 15.9,
+    "humidity": 0.68,
+    "pressure_hpa": 992.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:25:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:35:00-03:00",
+        "temperature": 11.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:57:00-03:00",
+        "temperature": 19.8
+      },
+      "minimum": {
+        "time": "2022-10-28T03:30:00-03:00",
+        "temperature": 12.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 270009,
+    "name": "Copiapó Universidad de Atacama",
+    "operational": false
+  },
+  {
+    "code": 280010,
+    "name": "Freirina Nicolasa",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 18.7,
+    "humidity": 0.63,
+    "pressure_hpa": 997.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:15:00-03:00",
+        "temperature": 6.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:59:00-03:00",
+        "temperature": 19.9
+      },
+      "minimum": {
+        "time": "2022-10-28T01:05:00-03:00",
+        "temperature": 8.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 290004,
+    "name": "La Florida, La Serena Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 15.3,
+    "humidity": 0.75,
+    "pressure_hpa": 999.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:44:00-03:00",
+        "temperature": 8.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:37:00-03:00",
+        "temperature": 16.2
+      },
+      "minimum": {
+        "time": "2022-10-28T20:59:00-03:00",
+        "temperature": 12.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 290013,
+    "name": "Cerro la Silla, observatorio astronómico",
+    "operational": true,
+    "last_report": "2022-10-29T13:20:00-03:00",
+    "temperature": 16.7,
+    "humidity": 0.17,
+    "pressure_hpa": 770.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:14:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T22:48:00-03:00",
+        "temperature": 12.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:09:00-03:00",
+        "temperature": 14.4
+      },
+      "minimum": {
+        "time": "2022-10-28T04:17:00-03:00",
+        "temperature": 9.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 300024,
+    "name": "Ovalle Escuela Agrícola",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 24.2,
+    "humidity": 0.41,
+    "pressure_hpa": 978.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:20:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:31:00-03:00",
+        "temperature": 8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:43:00-03:00",
+        "temperature": 23.1
+      },
+      "minimum": {
+        "time": "2022-10-28T06:24:00-03:00",
+        "temperature": 10.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 300034,
+    "name": "El Tololo",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 20,
+    "humidity": 0.21,
+    "pressure_hpa": 791.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:18:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:36:00-03:00",
+        "temperature": 12.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:58:00-03:00",
+        "temperature": 19.2
+      },
+      "minimum": {
+        "time": "2022-10-28T03:06:00-03:00",
+        "temperature": 10
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 300046,
+    "name": "Vicuña, Parque Los Pimientos",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 27.4,
+    "humidity": 0.28,
+    "pressure_hpa": 941.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:15:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:14:00-03:00",
+        "temperature": 8.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:05:00-03:00",
+        "temperature": 27.1
+      },
+      "minimum": {
+        "time": "2022-10-28T07:37:00-03:00",
+        "temperature": 7.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 300047,
+    "name": "Monte Patria, Municipalidad",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 28.8,
+    "humidity": 0.3,
+    "pressure_hpa": 967.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:08:00-03:00",
+        "temperature": 8.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:59:00-03:00",
+        "temperature": 28.6
+      },
+      "minimum": {
+        "time": "2022-10-28T06:16:00-03:00",
+        "temperature": 8.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 310023,
+    "name": "Canela Baja (Liceo Padre José Herde)",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 20.9,
+    "humidity": 0.51,
+    "pressure_hpa": 976.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:32:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:09:00-03:00",
+        "temperature": 7.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:15:00-03:00",
+        "temperature": 21
+      },
+      "minimum": {
+        "time": "2022-10-28T02:41:00-03:00",
+        "temperature": 9.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 310024,
+    "name": "Liceo Samuel Román Rojas (Combarbalá)",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 29.6,
+    "humidity": 0.13,
+    "pressure_hpa": 909.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:16:00-03:00",
+        "temperature": 12.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:30:00-03:00",
+        "temperature": 28.3
+      },
+      "minimum": {
+        "time": "2022-10-28T05:50:00-03:00",
+        "temperature": 10.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 310040,
+    "name": "Vivero Conaf, Illapel",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.3,
+    "humidity": 0.35,
+    "pressure_hpa": 976.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:24:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:09:00-03:00",
+        "temperature": 7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:50:00-03:00",
+        "temperature": 25.6
+      },
+      "minimum": {
+        "time": "2022-10-28T03:37:00-03:00",
+        "temperature": 7.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320019,
+    "name": "San Felipe Escuela Agrícola",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 27.7,
+    "humidity": 0.28,
+    "pressure_hpa": 938.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:57:00-03:00",
+        "temperature": 8.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:29:00-03:00",
+        "temperature": 28.8
+      },
+      "minimum": {
+        "time": "2022-10-28T05:42:00-03:00",
+        "temperature": -49.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320041,
+    "name": "Viña del Mar  Ad. (Torquemada)",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 18.5,
+    "humidity": 0.59,
+    "pressure_hpa": 999.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:20:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:04:00-03:00",
+        "temperature": 7.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:43:00-03:00",
+        "temperature": 22.1
+      },
+      "minimum": {
+        "time": "2022-10-28T06:34:00-03:00",
+        "temperature": 5.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320045,
+    "name": "Llay Llay, Las Peñas",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 28.1,
+    "humidity": 0.28,
+    "pressure_hpa": 966.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:14:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:33:00-03:00",
+        "temperature": 8.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:43:00-03:00",
+        "temperature": 28.3
+      },
+      "minimum": {
+        "time": "2022-10-28T06:56:00-03:00",
+        "temperature": 7.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320049,
+    "name": "Chincolco Liceo agrícola",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 27.1,
+    "humidity": 0.25,
+    "pressure_hpa": 938.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:26:00-03:00",
+        "temperature": 6.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:04:00-03:00",
+        "temperature": 26.5
+      },
+      "minimum": {
+        "time": "2022-10-28T05:58:00-03:00",
+        "temperature": 5.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320051,
+    "name": "Los Libertadores",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.4,
+    "humidity": 0.19,
+    "pressure_hpa": 716.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:14:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:43:00-03:00",
+        "temperature": 5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:55:00-03:00",
+        "temperature": 10.8
+      },
+      "minimum": {
+        "time": "2022-10-28T07:01:00-03:00",
+        "temperature": 1.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320055,
+    "name": "Catemu",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 27.4,
+    "humidity": 0.26,
+    "pressure_hpa": 963.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:05:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:34:00-03:00",
+        "temperature": 7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:05:00-03:00",
+        "temperature": 27.3
+      },
+      "minimum": {
+        "time": "2022-10-28T07:04:00-03:00",
+        "temperature": 6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320056,
+    "name": "Quintero, Climatológica",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 14.6,
+    "humidity": 0.81,
+    "pressure_hpa": 1017.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:48:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:24:00-03:00",
+        "temperature": 6.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:36:00-03:00",
+        "temperature": 17.1
+      },
+      "minimum": {
+        "time": "2022-10-28T06:29:00-03:00",
+        "temperature": 3.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 320063,
+    "name": "Zapallar Catapilco",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 21.4,
+    "humidity": 0.54,
+    "pressure_hpa": 1006.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:47:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:20:00-03:00",
+        "temperature": 4.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:36:00-03:00",
+        "temperature": 21
+      },
+      "minimum": {
+        "time": "2022-10-28T05:41:00-03:00",
+        "temperature": 3.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330006,
+    "name": "Jardín Botánico (ex Parque Fauna), Viña del Mar",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 22.2,
+    "humidity": 0.5,
+    "pressure_hpa": 1012.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:03:00-03:00",
+        "temperature": 6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:12:00-03:00",
+        "temperature": 24.2
+      },
+      "minimum": {
+        "time": "2022-10-28T06:21:00-03:00",
+        "temperature": 4.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330007,
+    "name": "Rodelillo, Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 22.6,
+    "humidity": 0.48,
+    "pressure_hpa": 978.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:10:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T03:48:00-03:00",
+        "temperature": 10
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:00:00-03:00",
+        "temperature": 22
+      },
+      "minimum": {
+        "time": "2022-10-28T06:36:00-03:00",
+        "temperature": 6.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330019,
+    "name": "Eulogio Sánchez, Tobalaba Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 24.5,
+    "humidity": 0.26,
+    "pressure_hpa": 941.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:23:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:45:00-03:00",
+        "temperature": 9.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:34:00-03:00",
+        "temperature": 26.3
+      },
+      "minimum": {
+        "time": "2022-10-28T07:08:00-03:00",
+        "temperature": 9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330020,
+    "name": "Quinta Normal, Santiago",
+    "operational": true,
+    "last_report": "2022-10-29T13:35:00-03:00",
+    "temperature": 26.8,
+    "humidity": 0.28,
+    "pressure_hpa": 955.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:33:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:00:00-03:00",
+        "temperature": 8.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:05:00-03:00",
+        "temperature": 26.4
+      },
+      "minimum": {
+        "time": "2022-10-28T06:49:00-03:00",
+        "temperature": 8.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330021,
+    "name": "Pudahuel Santiago",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.3,
+    "humidity": 0.31,
+    "pressure_hpa": 960.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:19:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:09:00-03:00",
+        "temperature": 8.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:20:00-03:00",
+        "temperature": 26.5
+      },
+      "minimum": {
+        "time": "2022-10-28T05:58:00-03:00",
+        "temperature": 8.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330030,
+    "name": "Santo Domingo, Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": 14.3,
+    "humidity": 0.94,
+    "pressure_hpa": 1008.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:48:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:24:00-03:00",
+        "temperature": 8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:45:00-03:00",
+        "temperature": 16.4
+      },
+      "minimum": {
+        "time": "2022-10-28T05:36:00-03:00",
+        "temperature": 7
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    }
+  },
+  {
+    "code": 330031,
+    "name": "Juan Fernández, Estación Meteorológica.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 16,
+    "humidity": 0.76,
+    "pressure_hpa": 1017.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:07:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:47:00-03:00",
+        "temperature": 11.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:36:00-03:00",
+        "temperature": 18.6
+      },
+      "minimum": {
+        "time": "2022-10-28T07:49:00-03:00",
+        "temperature": 13.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330071,
+    "name": "Talagante",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.4,
+    "humidity": 0.39,
+    "pressure_hpa": 969.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:25:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:38:00-03:00",
+        "temperature": 6.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:02:00-03:00",
+        "temperature": 27
+      },
+      "minimum": {
+        "time": "2022-10-28T06:37:00-03:00",
+        "temperature": 6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330076,
+    "name": "Chorombo Hacienda",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.9,
+    "humidity": 0.39,
+    "pressure_hpa": 997.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:20:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:55:00-03:00",
+        "temperature": 6.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:55:00-03:00",
+        "temperature": 25.5
+      },
+      "minimum": {
+        "time": "2022-10-28T05:49:00-03:00",
+        "temperature": 6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330077,
+    "name": "El Colorado",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 10.2,
+    "humidity": 0.4,
+    "pressure_hpa": 733.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:23:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:34:00-03:00",
+        "temperature": 4.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:10:00-03:00",
+        "temperature": 11
+      },
+      "minimum": {
+        "time": "2022-10-28T00:00:00-03:00",
+        "temperature": 4.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330081,
+    "name": "Polpaico",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 27.2,
+    "humidity": 0.26,
+    "pressure_hpa": 952.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:15:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:26:00-03:00",
+        "temperature": 6.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:20:00-03:00",
+        "temperature": 29.1
+      },
+      "minimum": {
+        "time": "2022-10-28T06:28:00-03:00",
+        "temperature": 4.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330111,
+    "name": "Lo Prado Cerro San Francisco",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 23.2,
+    "humidity": 0.32,
+    "pressure_hpa": 897,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T21:06:00-03:00",
+        "temperature": 10.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 121.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:45:00-03:00",
+        "temperature": 23.8
+      },
+      "minimum": {
+        "time": "2022-10-28T21:39:00-03:00",
+        "temperature": 8.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 121.8
+      }
+    }
+  },
+  {
+    "code": 330112,
+    "name": "San José  Guayacán",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25,
+    "humidity": 0.2,
+    "pressure_hpa": 911.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:53:00-03:00",
+        "temperature": 7.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:01:00-03:00",
+        "temperature": 24.1
+      },
+      "minimum": {
+        "time": "2022-10-28T06:46:00-03:00",
+        "temperature": 6.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330113,
+    "name": "El Paico",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.3,
+    "humidity": 0.39,
+    "pressure_hpa": 984,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:17:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:26:00-03:00",
+        "temperature": 7.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:10:00-03:00",
+        "temperature": 25.7
+      },
+      "minimum": {
+        "time": "2022-10-28T06:07:00-03:00",
+        "temperature": 6.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330114,
+    "name": "San Pablo - DASA",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.2,
+    "humidity": 0.31,
+    "pressure_hpa": 959.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:37:00-03:00",
+        "temperature": 9.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:10:00-03:00",
+        "temperature": 26.4
+      },
+      "minimum": {
+        "time": "2022-10-28T06:04:00-03:00",
+        "temperature": 8.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330118,
+    "name": "Lo Pinto",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.8,
+    "humidity": 0.27,
+    "pressure_hpa": 957,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:26:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:08:00-03:00",
+        "temperature": 8.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:31:00-03:00",
+        "temperature": 28.6
+      },
+      "minimum": {
+        "time": "2022-10-28T06:44:00-03:00",
+        "temperature": 7.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330121,
+    "name": "Curacaví Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.7,
+    "humidity": 0.33,
+    "pressure_hpa": 991.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:27:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:32:00-03:00",
+        "temperature": 5.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:12:00-03:00",
+        "temperature": 27.2
+      },
+      "minimum": {
+        "time": "2022-10-28T06:12:00-03:00",
+        "temperature": 6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330122,
+    "name": "Aguas Andinas, La Florida",
+    "operational": false
+  },
+  {
+    "code": 330160,
+    "name": "El Milagro, Buin",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.8,
+    "humidity": 0.33,
+    "pressure_hpa": 965.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:43:00-03:00",
+        "temperature": 6.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T17:37:00-03:00",
+        "temperature": 26.3
+      },
+      "minimum": {
+        "time": "2022-10-28T05:57:00-03:00",
+        "temperature": 6.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330161,
+    "name": "San Antonio, Lo Zarate",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 16.4,
+    "humidity": 0.78,
+    "pressure_hpa": 1004.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:41:00-03:00",
+        "temperature": 6.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T12:54:00-03:00",
+        "temperature": 18.7
+      },
+      "minimum": {
+        "time": "2022-10-28T06:05:00-03:00",
+        "temperature": 6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330162,
+    "name": "Colina (Reg.)",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 24.1,
+    "humidity": 0.24,
+    "pressure_hpa": 929.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:08:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T03:18:00-03:00",
+        "temperature": 10.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:34:00-03:00",
+        "temperature": 25.9
+      },
+      "minimum": {
+        "time": "2022-10-28T06:22:00-03:00",
+        "temperature": 9.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330163,
+    "name": "Peldehue Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 26.7,
+    "humidity": 0.25,
+    "pressure_hpa": 937.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:31:00-03:00",
+        "temperature": 8.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:15:00-03:00",
+        "temperature": 27.9
+      },
+      "minimum": {
+        "time": "2022-10-28T06:45:00-03:00",
+        "temperature": 7.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 330193,
+    "name": "Llanos de Caleu - La Dormida",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 19.4,
+    "humidity": 0.43,
+    "pressure_hpa": 856.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:07:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T02:47:00-03:00",
+        "temperature": 9.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:58:00-03:00",
+        "temperature": 19.9
+      },
+      "minimum": {
+        "time": "2022-10-28T04:18:00-03:00",
+        "temperature": 7.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340031,
+    "name": "General Freire, Curicó Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 24.6,
+    "humidity": 0.42,
+    "pressure_hpa": 988.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:19:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:03:00-03:00",
+        "temperature": 9.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:53:00-03:00",
+        "temperature": 23.6
+      },
+      "minimum": {
+        "time": "2022-10-28T06:24:00-03:00",
+        "temperature": 11.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340045,
+    "name": "Rancagua",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.3,
+    "humidity": 0.39,
+    "pressure_hpa": 959.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:16:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:13:00-03:00",
+        "temperature": 8.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:09:00-03:00",
+        "temperature": 24
+      },
+      "minimum": {
+        "time": "2022-10-28T07:14:00-03:00",
+        "temperature": 9.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340048,
+    "name": "Quimávida",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 25.5,
+    "humidity": 0.43,
+    "pressure_hpa": 979.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:24:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:07:00-03:00",
+        "temperature": 8.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:31:00-03:00",
+        "temperature": 24.7
+      },
+      "minimum": {
+        "time": "2022-10-28T04:09:00-03:00",
+        "temperature": 8.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340066,
+    "name": "Nilahue - La Quebrada",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 21.7,
+    "humidity": 0.56,
+    "pressure_hpa": 1005.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:59:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:36:00-03:00",
+        "temperature": 7.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:25:00-03:00",
+        "temperature": 22.7
+      },
+      "minimum": {
+        "time": "2022-10-28T00:42:00-03:00",
+        "temperature": 7.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340093,
+    "name": "Portezuelo-Codelco",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 21.5,
+    "humidity": 0.4,
+    "pressure_hpa": 885,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:46:00-03:00",
+        "temperature": 10.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:22:00-03:00",
+        "temperature": 19.4
+      },
+      "minimum": {
+        "time": "2022-10-28T07:00:00-03:00",
+        "temperature": 8.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 340115,
+    "name": "Pichilemu aeródromo",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 15.6,
+    "humidity": 0.84,
+    "pressure_hpa": 1014.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:05:00-03:00",
+        "temperature": 12.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:12:00-03:00",
+        "temperature": 16.9
+      },
+      "minimum": {
+        "time": "2022-10-28T05:58:00-03:00",
+        "temperature": 11.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 350028,
+    "name": "Panguilemo",
+    "operational": false
+  },
+  {
+    "code": 350901,
+    "name": "Escuela de Artillería Linares",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 22.2,
+    "humidity": 0.53,
+    "pressure_hpa": 997.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:44:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:19:00-03:00",
+        "temperature": 9.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:58:00-03:00",
+        "temperature": 20.1
+      },
+      "minimum": {
+        "time": "2022-10-28T04:00:00-03:00",
+        "temperature": 11
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 360011,
+    "name": "General Bernardo O'Higgins, Chillán Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": 17.5,
+    "humidity": 0.73,
+    "pressure_hpa": 997.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:20:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:03:00-03:00",
+        "temperature": 12.4
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:41:00-03:00",
+        "temperature": 14.8
+      },
+      "minimum": {
+        "time": "2022-10-28T01:47:00-03:00",
+        "temperature": 7.6
+      },
+      "precipitations": {
+        "sum": 2.6,
+        "ema": 3
+      }
+    }
+  },
+  {
+    "code": 360019,
+    "name": "Carriel Sur, Concepción Ap.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 13.8,
+    "humidity": 0.97,
+    "pressure_hpa": 1015.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:07:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:32:00-03:00",
+        "temperature": 12.7
+      },
+      "precipitations": {
+        "sum": 0.4,
+        "ema": 0.4
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T08:48:00-03:00",
+        "temperature": 14.3
+      },
+      "minimum": {
+        "time": "2022-10-28T02:59:00-03:00",
+        "temperature": 13.6
+      },
+      "precipitations": {
+        "sum": 14.6,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 360042,
+    "name": "Termas de Chillán",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 5.2,
+    "humidity": 0.92,
+    "pressure_hpa": 826.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T08:05:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T21:54:00-03:00",
+        "temperature": 4.4
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T05:36:00-03:00",
+        "temperature": 7.5
+      },
+      "minimum": {
+        "time": "2022-10-28T09:19:00-03:00",
+        "temperature": 1.9
+      },
+      "precipitations": {
+        "sum": 14.1,
+        "ema": 14.1
+      }
+    }
+  },
+  {
+    "code": 360046,
+    "name": "Chillán Mayulermo",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 13.2,
+    "humidity": 0.94,
+    "pressure_hpa": 969.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:14:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T21:06:00-03:00",
+        "temperature": 11.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:56:00-03:00",
+        "temperature": 11.7
+      },
+      "minimum": {
+        "time": "2022-10-28T01:03:00-03:00",
+        "temperature": 5.8
+      },
+      "precipitations": {
+        "sum": 2.1,
+        "ema": 2.1
+      }
+    }
+  },
+  {
+    "code": 360047,
+    "name": "Retiro Copihue",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 19.9,
+    "humidity": 0.62,
+    "pressure_hpa": 995.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:34:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T03:29:00-03:00",
+        "temperature": 10.8
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:27:00-03:00",
+        "temperature": 18.1
+      },
+      "minimum": {
+        "time": "2022-10-28T00:17:00-03:00",
+        "temperature": 8.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 370036,
+    "name": "El Huertón liceo agrícola, Los \ufffd",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 13.9,
+    "humidity": 0.96,
+    "pressure_hpa": 500.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:17:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:26:00-03:00",
+        "temperature": 12
+      },
+      "precipitations": {
+        "sum": 1.6,
+        "ema": 1.6
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T21:08:00-03:00",
+        "temperature": 13.6
+      },
+      "minimum": {
+        "time": "2022-10-28T05:13:00-03:00",
+        "temperature": 10.4
+      },
+      "precipitations": {
+        "sum": 9.1,
+        "ema": 9.1
+      }
+    }
+  },
+  {
+    "code": 370067,
+    "name": "Angol, Húsares",
+    "operational": false
+  },
+  {
+    "code": 380013,
+    "name": "Maquehue, Temuco Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 13.9,
+    "humidity": 0.84,
+    "pressure_hpa": 1000.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:14:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:17:00-03:00",
+        "temperature": 10.4
+      },
+      "precipitations": {
+        "sum": 4.3,
+        "ema": 4.3
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:54:00-03:00",
+        "temperature": 13.7
+      },
+      "minimum": {
+        "time": "2022-10-28T01:08:00-03:00",
+        "temperature": 11.2
+      },
+      "precipitations": {
+        "sum": 24.7,
+        "ema": 24.7
+      }
+    }
+  },
+  {
+    "code": 380018,
+    "name": "Lonquimay",
+    "operational": false
+  },
+  {
+    "code": 380029,
+    "name": "La Araucanía Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": 13.1,
+    "humidity": 0.91,
+    "pressure_hpa": 999.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:46:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:41:00-03:00",
+        "temperature": 10.4
+      },
+      "precipitations": {
+        "sum": 8,
+        "ema": 14.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:50:00-03:00",
+        "temperature": 14.2
+      },
+      "minimum": {
+        "time": "2022-10-28T01:53:00-03:00",
+        "temperature": 10.9
+      },
+      "precipitations": {
+        "sum": 27.8,
+        "ema": 6.8
+      }
+    }
+  },
+  {
+    "code": 380032,
+    "name": "Rucamanque-UFRO",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 10.9,
+    "humidity": 1,
+    "pressure_hpa": 970.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:43:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:07:00-03:00",
+        "temperature": 8.6
+      },
+      "precipitations": {
+        "sum": 6.8,
+        "ema": 6.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:50:00-03:00",
+        "temperature": 13
+      },
+      "minimum": {
+        "time": "2022-10-28T03:06:00-03:00",
+        "temperature": 9.5
+      },
+      "precipitations": {
+        "sum": 23.4,
+        "ema": 23.4
+      }
+    }
+  },
+  {
+    "code": 380033,
+    "name": "Maquehue-UFRO",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 14.4,
+    "humidity": 0.8,
+    "pressure_hpa": 1002.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:35:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:26:00-03:00",
+        "temperature": 10.4
+      },
+      "precipitations": {
+        "sum": 9.1,
+        "ema": 9.1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:38:00-03:00",
+        "temperature": 14.5
+      },
+      "minimum": {
+        "time": "2022-10-28T01:37:00-03:00",
+        "temperature": 11
+      },
+      "precipitations": {
+        "sum": 23.3,
+        "ema": 23.3
+      }
+    }
+  },
+  {
+    "code": 380063,
+    "name": "Victoria (Reg.)",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 12.8,
+    "humidity": 0.9,
+    "pressure_hpa": 973,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:46:00-03:00",
+        "temperature": 10.3
+      },
+      "precipitations": {
+        "sum": 2.5,
+        "ema": 2.5
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T18:48:00-03:00",
+        "temperature": 12.6
+      },
+      "minimum": {
+        "time": "2022-10-28T12:16:00-03:00",
+        "temperature": 9.6
+      },
+      "precipitations": {
+        "sum": 21.2,
+        "ema": 21.2
+      }
+    }
+  },
+  {
+    "code": 380080,
+    "name": "Lequecahue Tirúa Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.6,
+    "humidity": 0.99,
+    "pressure_hpa": 995.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:36:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:17:00-03:00",
+        "temperature": 11.3
+      },
+      "precipitations": {
+        "sum": 4.7,
+        "ema": 4.7
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:14:00-03:00",
+        "temperature": 12.6
+      },
+      "minimum": {
+        "time": "2022-10-28T03:15:00-03:00",
+        "temperature": 10.3
+      },
+      "precipitations": {
+        "sum": 18.1,
+        "ema": 18.1
+      }
+    }
+  },
+  {
+    "code": 390006,
+    "name": "Pichoy, Valdivia Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.7,
+    "humidity": 0.8,
+    "pressure_hpa": 1009.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:59:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T03:23:00-03:00",
+        "temperature": 10.1
+      },
+      "precipitations": {
+        "sum": 0.6,
+        "ema": 0.6
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:05:00-03:00",
+        "temperature": 14.7
+      },
+      "minimum": {
+        "time": "2022-10-28T20:39:00-03:00",
+        "temperature": 11.7
+      },
+      "precipitations": {
+        "sum": 8.6,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 390015,
+    "name": "Isla Teja  (Universidad Austral Valdivia)",
+    "operational": false
+  },
+  {
+    "code": 390028,
+    "name": "Villarrica",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 12.5,
+    "humidity": 0.92,
+    "pressure_hpa": 965.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:12:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:09:00-03:00",
+        "temperature": 8.6
+      },
+      "precipitations": {
+        "sum": 12.5,
+        "ema": 12.5
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:02:00-03:00",
+        "temperature": 11.7
+      },
+      "minimum": {
+        "time": "2022-10-28T20:59:00-03:00",
+        "temperature": 9.4
+      },
+      "precipitations": {
+        "sum": 45.2,
+        "ema": 45.7
+      }
+    }
+  },
+  {
+    "code": 390029,
+    "name": "Panguipulli",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.7,
+    "humidity": 0.88,
+    "pressure_hpa": 981.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:50:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T01:12:00-03:00",
+        "temperature": 8.2
+      },
+      "precipitations": {
+        "sum": 3.4,
+        "ema": 3.4
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:48:00-03:00",
+        "temperature": 12.6
+      },
+      "minimum": {
+        "time": "2022-10-28T20:42:00-03:00",
+        "temperature": 8.7
+      },
+      "precipitations": {
+        "sum": 37.5,
+        "ema": 37.5
+      }
+    }
+  },
+  {
+    "code": 390043,
+    "name": "Corral ESSAL",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.9,
+    "humidity": 0.72,
+    "pressure_hpa": 1012.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T11:39:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T01:06:00-03:00",
+        "temperature": 9.3
+      },
+      "precipitations": {
+        "sum": 1.2,
+        "ema": 1.2
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:47:00-03:00",
+        "temperature": 13.8
+      },
+      "minimum": {
+        "time": "2022-10-28T20:26:00-03:00",
+        "temperature": 11.4
+      },
+      "precipitations": {
+        "sum": 21.3,
+        "ema": 21.3
+      }
+    }
+  },
+  {
+    "code": 390056,
+    "name": "Pucón Aeródromo",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 11.4,
+    "humidity": 0.94,
+    "pressure_hpa": 977.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T09:42:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:37:00-03:00",
+        "temperature": 8.9
+      },
+      "precipitations": {
+        "sum": 15.3,
+        "ema": 15.3
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:21:00-03:00",
+        "temperature": 11.8
+      },
+      "minimum": {
+        "time": "2022-10-28T20:58:00-03:00",
+        "temperature": 9.6
+      },
+      "precipitations": {
+        "sum": 35.1,
+        "ema": 35.1
+      }
+    }
+  },
+  {
+    "code": 400009,
+    "name": "Cañal Bajo,  Osorno Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 10,
+    "humidity": 0.74,
+    "pressure_hpa": 1004.3,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T09:15:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T00:51:00-03:00",
+        "temperature": 7.9
+      },
+      "precipitations": {
+        "sum": 0.8,
+        "ema": 0.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:07:00-03:00",
+        "temperature": 16.1
+      },
+      "minimum": {
+        "time": "2022-10-28T07:12:00-03:00",
+        "temperature": 10.2
+      },
+      "precipitations": {
+        "sum": 3.6,
+        "ema": 3.6
+      }
+    }
+  },
+  {
+    "code": 400013,
+    "name": "Juan Kalt Bode (Fundación Adolfo Matthei)",
+    "operational": true,
+    "last_report": "2022-10-29T13:15:00-03:00",
+    "temperature": 11.4,
+    "humidity": 0.73,
+    "pressure_hpa": 1004.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T09:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T00:49:00-03:00",
+        "temperature": 7.8
+      },
+      "precipitations": {
+        "sum": 1,
+        "ema": 1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:31:00-03:00",
+        "temperature": 15.5
+      },
+      "minimum": {
+        "time": "2022-10-28T07:47:00-03:00",
+        "temperature": 10.2
+      },
+      "precipitations": {
+        "sum": 3.5,
+        "ema": 3.5
+      }
+    }
+  },
+  {
+    "code": 400033,
+    "name": "San Juan de la Costa, Bahía Mansa",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 9.5,
+    "humidity": 0.81,
+    "pressure_hpa": 1001.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T06:24:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:33:00-03:00",
+        "temperature": 6.9
+      },
+      "precipitations": {
+        "sum": 0.8,
+        "ema": 0.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:42:00-03:00",
+        "temperature": 14.1
+      },
+      "minimum": {
+        "time": "2022-10-28T03:51:00-03:00",
+        "temperature": 9.4
+      },
+      "precipitations": {
+        "sum": 12.2,
+        "ema": 12.2
+      }
+    }
+  },
+  {
+    "code": 410005,
+    "name": "El Tepual  Puerto Montt Ap.",
+    "operational": false
+  },
+  {
+    "code": 410026,
+    "name": "Ancud Liceo Agrícola",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 12,
+    "humidity": 0.55,
+    "pressure_hpa": 1008.9,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:30:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:14:00-03:00",
+        "temperature": 7
+      },
+      "precipitations": {
+        "sum": 0.1,
+        "ema": 9.1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:28:00-03:00",
+        "temperature": 13
+      },
+      "minimum": {
+        "time": "2022-10-28T20:59:00-03:00",
+        "temperature": 7.6
+      },
+      "precipitations": {
+        "sum": 9,
+        "ema": 9
+      }
+    }
+  },
+  {
+    "code": 410027,
+    "name": "Escuela Mirasol, Puerto Montt",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 10.1,
+    "humidity": 0.8,
+    "pressure_hpa": 999,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T12:17:00-03:00",
+        "temperature": 6.6
+      },
+      "precipitations": {
+        "sum": 3.4,
+        "ema": 3.4
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:36:00-03:00",
+        "temperature": 14.2
+      },
+      "minimum": {
+        "time": "2022-10-28T20:59:00-03:00",
+        "temperature": 8.3
+      },
+      "precipitations": {
+        "sum": 13.1,
+        "ema": 13.1
+      }
+    }
+  },
+  {
+    "code": 410040,
+    "name": "Puerto Varas ESSAL",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 8.8,
+    "humidity": 0.84,
+    "pressure_hpa": 1004,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T10:53:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T12:38:00-03:00",
+        "temperature": 6.7
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:58:00-03:00",
+        "temperature": 14.3
+      },
+      "minimum": {
+        "time": "2022-10-28T20:56:00-03:00",
+        "temperature": 8.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 420015,
+    "name": "Nueva Chaitén",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": 8.9,
+    "humidity": 0.79,
+    "pressure_hpa": 1009.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:56:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:21:00-03:00",
+        "temperature": 3.6
+      },
+      "precipitations": {
+        "sum": 4,
+        "ema": 4
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T21:00:00-03:00",
+        "temperature": 11.4
+      },
+      "minimum": {
+        "time": "2022-10-28T11:46:00-03:00",
+        "temperature": 6.9
+      },
+      "precipitations": {
+        "sum": 29,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 430001,
+    "name": "Quellón Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 10.4,
+    "humidity": 0.67,
+    "pressure_hpa": 1009.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:28:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:55:00-03:00",
+        "temperature": 6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:03:00-03:00",
+        "temperature": 12.3
+      },
+      "minimum": {
+        "time": "2022-10-28T03:21:00-03:00",
+        "temperature": 5.5
+      },
+      "precipitations": {
+        "sum": 6,
+        "ema": 6
+      }
+    }
+  },
+  {
+    "code": 430002,
+    "name": "Futaleufú Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.9,
+    "humidity": 0.61,
+    "pressure_hpa": 964.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:21:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T23:14:00-03:00",
+        "temperature": 3.4
+      },
+      "precipitations": {
+        "sum": 1.2,
+        "ema": 1.2
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T21:04:00-03:00",
+        "temperature": 11.4
+      },
+      "minimum": {
+        "time": "2022-10-28T06:39:00-03:00",
+        "temperature": 4.4
+      },
+      "precipitations": {
+        "sum": 12,
+        "ema": 12
+      }
+    }
+  },
+  {
+    "code": 430009,
+    "name": "Melinka Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 9.4,
+    "humidity": 0.68,
+    "pressure_hpa": 1008.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:54:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T03:12:00-03:00",
+        "temperature": 5.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T12:53:00-03:00",
+        "temperature": 11.1
+      },
+      "minimum": {
+        "time": "2022-10-28T04:36:00-03:00",
+        "temperature": 7
+      },
+      "precipitations": {
+        "sum": 5,
+        "ema": 5
+      }
+    }
+  },
+  {
+    "code": 440004,
+    "name": "Cisnes Puyuhuapi",
+    "operational": false
+  },
+  {
+    "code": 450001,
+    "name": "Puerto Aysén Ad.",
+    "operational": false
+  },
+  {
+    "code": 450004,
+    "name": "Teniente Vidal, Coyhaique Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": 9.3,
+    "humidity": 0.49,
+    "pressure_hpa": 968,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:13:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T07:07:00-03:00",
+        "temperature": -0.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T16:58:00-03:00",
+        "temperature": 8.4
+      },
+      "minimum": {
+        "time": "2022-10-28T04:42:00-03:00",
+        "temperature": 1.6
+      },
+      "precipitations": {
+        "sum": 3.6,
+        "ema": 3.6
+      }
+    }
+  },
+  {
+    "code": 450005,
+    "name": "Balmaceda Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7,
+    "humidity": 0.52,
+    "pressure_hpa": 940.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:35:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:48:00-03:00",
+        "temperature": -0.6
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:18:00-03:00",
+        "temperature": 8.7
+      },
+      "minimum": {
+        "time": "2022-10-28T07:03:00-03:00",
+        "temperature": 0.8
+      },
+      "precipitations": {
+        "sum": 0.6,
+        "ema": 0.6
+      }
+    }
+  },
+  {
+    "code": 450022,
+    "name": "Mirador Marchant, Coyhaique",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.1,
+    "humidity": 0.6,
+    "pressure_hpa": 954.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:21:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:27:00-03:00",
+        "temperature": 1.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T11:20:00-03:00",
+        "temperature": 5.2
+      },
+      "minimum": {
+        "time": "2022-10-28T08:44:00-03:00",
+        "temperature": 0.9
+      },
+      "precipitations": {
+        "sum": 7,
+        "ema": 7
+      }
+    }
+  },
+  {
+    "code": 470001,
+    "name": "Lord Cochrane Ad.",
+    "operational": false
+  },
+  {
+    "code": 480002,
+    "name": "Villa O\"Higgins subcomisaría",
+    "operational": false
+  },
+  {
+    "code": 510005,
+    "name": "Teniente Gallardo, Puerto Natales Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.1,
+    "humidity": 0.54,
+    "pressure_hpa": 987.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:21:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:07:00-03:00",
+        "temperature": 1.3
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:39:00-03:00",
+        "temperature": 7.6
+      },
+      "minimum": {
+        "time": "2022-10-28T00:04:00-03:00",
+        "temperature": 0.8
+      },
+      "precipitations": {
+        "sum": 2.3,
+        "ema": 2.3
+      }
+    }
+  },
+  {
+    "code": 510020,
+    "name": "Río Serrano, Torres del Paine",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 5.5,
+    "humidity": 0.81,
+    "pressure_hpa": 995.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T10:38:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:53:00-03:00",
+        "temperature": 1.9
+      },
+      "precipitations": {
+        "sum": 0.8,
+        "ema": 0.8
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:44:00-03:00",
+        "temperature": 7.4
+      },
+      "minimum": {
+        "time": "2022-10-28T11:06:00-03:00",
+        "temperature": 1.2
+      },
+      "precipitations": {
+        "sum": 4,
+        "ema": 4
+      }
+    }
+  },
+  {
+    "code": 520006,
+    "name": "Carlos Ibañez, Punta Arenas Ap.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 5.9,
+    "humidity": 0.77,
+    "pressure_hpa": 984.1,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:52:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:06:00-03:00",
+        "temperature": 1.8
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T12:56:00-03:00",
+        "temperature": 7.7
+      },
+      "minimum": {
+        "time": "2022-10-28T17:41:00-03:00",
+        "temperature": 2
+      },
+      "precipitations": {
+        "sum": 1.6,
+        "ema": 1.6
+      }
+    }
+  },
+  {
+    "code": 520012,
+    "name": "Instituto de la Patagonia (Jorge Schytte)",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.2,
+    "humidity": 0.58,
+    "pressure_hpa": 988,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:49:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:36:00-03:00",
+        "temperature": 2.2
+      },
+      "precipitations": {
+        "sum": 0.1,
+        "ema": 0.1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T11:52:00-03:00",
+        "temperature": 7.4
+      },
+      "minimum": {
+        "time": "2022-10-28T05:24:00-03:00",
+        "temperature": 2.5
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    }
+  },
+  {
+    "code": 520014,
+    "name": "Punta Arenas Unidad Aeropolicial",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 6.9,
+    "humidity": 0.61,
+    "pressure_hpa": 982,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:34:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:16:00-03:00",
+        "temperature": 2.5
+      },
+      "precipitations": {
+        "sum": 0.1,
+        "ema": 0.1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T12:38:00-03:00",
+        "temperature": 7.2
+      },
+      "minimum": {
+        "time": "2022-10-28T04:02:00-03:00",
+        "temperature": 3.3
+      },
+      "precipitations": {
+        "sum": 0.5,
+        "ema": 0.5
+      }
+    }
+  },
+  {
+    "code": 520015,
+    "name": "Magallanes Villa Tehuelche",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.6,
+    "humidity": 0.55,
+    "pressure_hpa": 970.4,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:05:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:57:00-03:00",
+        "temperature": -0.2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:22:00-03:00",
+        "temperature": 6.9
+      },
+      "minimum": {
+        "time": "2022-10-28T06:22:00-03:00",
+        "temperature": -0.3
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    }
+  },
+  {
+    "code": 520030,
+    "name": "Cerro Sombrero, Estrecho de Magallanes",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 8.9,
+    "humidity": 0.5,
+    "pressure_hpa": 977.8,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:29:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:23:00-03:00",
+        "temperature": 0.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T13:21:00-03:00",
+        "temperature": 8.8
+      },
+      "minimum": {
+        "time": "2022-10-28T01:46:00-03:00",
+        "temperature": 0.2
+      },
+      "precipitations": {
+        "sum": 0.5,
+        "ema": 0.5
+      }
+    }
+  },
+  {
+    "code": 530005,
+    "name": "Fuentes Martínez, Porvenir Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 7.4,
+    "humidity": 0.6,
+    "pressure_hpa": 984.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:17:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:11:00-03:00",
+        "temperature": 2.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T14:14:00-03:00",
+        "temperature": 7.8
+      },
+      "minimum": {
+        "time": "2022-10-28T06:59:00-03:00",
+        "temperature": 2
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  },
+  {
+    "code": 530008,
+    "name": "Escuela Alberto Hurtado",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 6.8,
+    "humidity": 0.59,
+    "pressure_hpa": 980.2,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T12:46:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T04:13:00-03:00",
+        "temperature": 1.6
+      },
+      "precipitations": {
+        "sum": 0.1,
+        "ema": 0.1
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T15:42:00-03:00",
+        "temperature": 6.4
+      },
+      "minimum": {
+        "time": "2022-10-28T03:26:00-03:00",
+        "temperature": 2.6
+      },
+      "precipitations": {
+        "sum": 0.8,
+        "ema": 1.1
+      }
+    }
+  },
+  {
+    "code": 540008,
+    "name": "Pampa Guanaco, Tierra del Fuego",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 8,
+    "humidity": 0.55,
+    "pressure_hpa": 964.5,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T13:27:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T05:52:00-03:00",
+        "temperature": 0.5
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T10:39:00-03:00",
+        "temperature": 9.7
+      },
+      "minimum": {
+        "time": "2022-10-28T05:34:00-03:00",
+        "temperature": 0.2
+      },
+      "precipitations": {
+        "sum": 0.5,
+        "ema": 0.5
+      }
+    }
+  },
+  {
+    "code": 550001,
+    "name": "Guardiamarina Zañartu, Pto Williams Ad.",
+    "operational": true,
+    "last_report": "2022-10-29T13:30:00-03:00",
+    "temperature": 4.2,
+    "humidity": 0.89,
+    "pressure_hpa": 979.6,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T10:40:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T22:31:00-03:00",
+        "temperature": 1.2
+      },
+      "precipitations": {
+        "sum": 0.6,
+        "ema": 0.6
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T12:43:00-03:00",
+        "temperature": 11.3
+      },
+      "minimum": {
+        "time": "2022-10-28T06:19:00-03:00",
+        "temperature": 2.1
+      },
+      "precipitations": {
+        "sum": 0.2,
+        "ema": 0.2
+      }
+    }
+  },
+  {
+    "code": 950001,
+    "name": "C.M.A. Eduardo Frei Montalva, Antártica",
+    "operational": true,
+    "last_report": "2022-10-29T13:29:00-03:00",
+    "temperature": -5.1,
+    "humidity": 0.7,
+    "pressure_hpa": 969.7,
+    "today": {
+      "maximum": {
+        "time": "2022-10-29T08:45:00-03:00",
+        "temperature": 0
+      },
+      "minimum": {
+        "time": "2022-10-29T06:10:00-03:00",
+        "temperature": -6.1
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    },
+    "yesterday": {
+      "maximum": {
+        "time": "2022-10-28T21:04:00-03:00",
+        "temperature": -4.5
+      },
+      "minimum": {
+        "time": "2022-10-28T19:44:00-03:00",
+        "temperature": -5.9
+      },
+      "precipitations": {
+        "sum": 0,
+        "ema": 0
+      }
+    }
+  }
+]

@@ -50,7 +50,7 @@ type DefaultService struct {
 	client *http.Client
 }
 
-func NewService() *DefaultService {
+func NewDefaultService() *DefaultService {
 	return &DefaultService{
 		client: &http.Client{
 			Timeout: 3 * time.Second,
@@ -90,7 +90,7 @@ func parseClimateHTML(r io.ReadCloser) (stations []*ClimateStation, err error) {
 			return
 		}
 
-		if strings.TrimSpace(row.Find("td:nth-child(4)").Text()) == "." {
+		if row.Find("strike").Length() != 0 {
 			station := &ClimateStation{
 				Name:        cleanName(row.Find("td:nth-child(3)").Text()),
 				Operational: false,
