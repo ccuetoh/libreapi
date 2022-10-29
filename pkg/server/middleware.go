@@ -1,15 +1,15 @@
 package server
 
 import (
-	"github.com/ccuetoh/libreapi/pkg/env"
-	"github.com/newrelic/go-agent/v3/integrations/nrgin"
 	"time"
 
 	"github.com/ccuetoh/libreapi/pkg"
+	"github.com/ccuetoh/libreapi/pkg/env"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	"github.com/newrelic/go-agent/v3/integrations/nrgin"
 	"github.com/ulule/limiter/v3"
 	mgin "github.com/ulule/limiter/v3/drivers/middleware/gin"
 	"github.com/ulule/limiter/v3/drivers/store/memory"

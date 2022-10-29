@@ -2,11 +2,13 @@ package rut
 
 import (
 	"fmt"
-	"github.com/ccuetoh/libreapi/pkg/env"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/ccuetoh/libreapi/pkg/env"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Service interface {

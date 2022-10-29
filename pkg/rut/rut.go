@@ -2,11 +2,12 @@ package rut
 
 import (
 	"fmt"
-	"github.com/pkg/errors"
 	"math/rand"
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/pkg/errors"
 )
 
 var ErrInvalidRUT = errors.New("invalid rut")

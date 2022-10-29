@@ -1,16 +1,17 @@
 package economy
 
 import (
-	"github.com/ccuetoh/libreapi/internal/test"
-	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
 
+	"github.com/ccuetoh/libreapi/internal/test"
 	"github.com/ccuetoh/libreapi/pkg/env"
+
+	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
+	"github.com/stretchr/testify/assert"
 )
 
 type MockService struct {

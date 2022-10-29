@@ -1,9 +1,10 @@
 package economy
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetIndicators(t *testing.T) {

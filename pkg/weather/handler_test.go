@@ -1,17 +1,17 @@
 package weather
 
 import (
-	"github.com/ccuetoh/libreapi/internal/test"
-	"github.com/pkg/errors"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"testing"
 	"time"
 
+	"github.com/ccuetoh/libreapi/internal/test"
 	"github.com/ccuetoh/libreapi/pkg/env"
 
 	"github.com/gin-gonic/gin"
+	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 )
 

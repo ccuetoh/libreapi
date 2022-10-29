@@ -2,10 +2,11 @@ package economy
 
 import (
 	"fmt"
-	"github.com/PuerkitoBio/goquery"
-	"github.com/pkg/errors"
 	"net/http"
 	"time"
+
+	"github.com/PuerkitoBio/goquery"
+	"github.com/pkg/errors"
 )
 
 type DefaultService struct {

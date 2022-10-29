@@ -1,11 +1,13 @@
 package weather
 
 import (
-	"github.com/ccuetoh/libreapi/internal/test"
-	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/ccuetoh/libreapi/internal/test"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetStations(t *testing.T) {

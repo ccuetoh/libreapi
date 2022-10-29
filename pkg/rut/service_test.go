@@ -1,9 +1,10 @@
 package rut
 
 import (
+	"testing"
+
 	"github.com/ccuetoh/libreapi/internal/test"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestGetProfile(t *testing.T) {

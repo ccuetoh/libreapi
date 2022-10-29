@@ -1,8 +1,9 @@
 package economy
 
 import (
-	"github.com/ccuetoh/libreapi/pkg/env"
 	"net/http"
+
+	"github.com/ccuetoh/libreapi/pkg/env"
 
 	"github.com/gin-gonic/gin"
 )

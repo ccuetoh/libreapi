@@ -1,8 +1,9 @@
 package rut
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestRut(t *testing.T) {

@@ -1,9 +1,10 @@
 package economy
 
 import (
+	"testing"
+
 	"github.com/ccuetoh/libreapi/internal/test"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestParseIndicatorsHTML(t *testing.T) {

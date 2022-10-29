@@ -3,16 +3,17 @@ package weather
 import (
 	"bytes"
 	"fmt"
-	"golang.org/x/text/encoding/charmap"
-	"golang.org/x/text/runes"
-	"golang.org/x/text/transform"
-	"golang.org/x/text/unicode/norm"
 	"io"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
 	"unicode"
+
+	"golang.org/x/text/encoding/charmap"
+	"golang.org/x/text/runes"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/sahilm/fuzzy"

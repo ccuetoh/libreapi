@@ -1,19 +1,20 @@
 package server
 
 import (
-	"github.com/ccuetoh/libreapi/pkg/config"
-	"github.com/ccuetoh/libreapi/pkg/env"
-	contextNrLogrus "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/nrlogrus"
 	"net"
+	"net/http"
 	"time"
 
+	"github.com/ccuetoh/libreapi/pkg/config"
 	"github.com/ccuetoh/libreapi/pkg/economy"
+	"github.com/ccuetoh/libreapi/pkg/env"
 	"github.com/ccuetoh/libreapi/pkg/rut"
 	"github.com/ccuetoh/libreapi/pkg/weather"
 
 	"github.com/chenyahui/gin-cache"
 	"github.com/chenyahui/gin-cache/persist"
 	"github.com/gin-gonic/gin"
+	contextNrLogrus "github.com/newrelic/go-agent/v3/integrations/logcontext-v2/nrlogrus"
 	"github.com/newrelic/go-agent/v3/integrations/nrlogrus"
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/pkg/errors"
@@ -86,7 +87,7 @@ func addEndpoints(server *Server) {
 	store := persist.NewMemoryStore(time.Minute)
 
 	server.engine.GET("/ping", func(c *gin.Context) {
-		c.String(200, "pong")
+		c.String(http.StatusOK, "pong")
 	})
 
 	rutHandler := rut.NewHandler(server.env, rut.NewDefaultService())
@@ -106,7 +107,7 @@ func addEndpoints(server *Server) {
 	economyGroup.GET("/indicators", economyHandler.Indicators())
 	economyGroup.GET("/currencies", economyHandler.Currencies())
 
-	weatherHandler := weather.NewHandler(server.env, weather.NewService())
+	weatherHandler := weather.NewHandler(server.env, weather.NewDefaultService())
 	weatherGroup := server.engine.Group("/weather")
 
 	weatherGroup.Use(cache.CacheByRequestURI(store, time.Minute*5))
