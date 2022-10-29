@@ -49,7 +49,7 @@ func (s *DefaultService) GetProfile(rut RUT) (*SIIProfile, error) {
 	}
 
 	form := url.Values{}
-	form.Add("RUT", rut.String()[:len(rut.Digits)-1])
+	form.Add("RUT", rut.String()[:len(rut.Digits)])
 	form.Add("DV", rut.VD.String())
 	form.Add("PRG", "STC")
 	form.Add("OPC", "NOR")
