@@ -1,138 +1,161 @@
 package rut
 
 import (
-	"errors"
+	"fmt"
+	"github.com/pkg/errors"
+	"math/rand"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
 var ErrInvalidRUT = errors.New("invalid rut")
+var ErrInvalidVD = errors.New("invalid verification figit")
 
-type RUT []int
+type VD int8
 
-func ParseRUT(rut string) (RUT, error) {
-	re := regexp.MustCompile("[0-9k]")
+const (
+	VDNone VD = iota - 2
+	VDK
+	VD0
+	VD1
+	VD2
+	VD3
+	VD4
+	VD5
+	VD6
+	VD7
+	VD8
+	VD9
+)
 
-	nums := re.FindAllString(strings.ToLower(rut), -1)
-	if len(nums) < 7 || len(nums) > 10 {
-		return RUT{}, ErrInvalidRUT
-	}
-
-	var rut2 RUT
-	for i, num := range nums {
-		switch num {
-		case "k":
-			if i != len(nums)-1 {
-				return RUT{}, ErrInvalidRUT
-			}
-
-			rut2 = append(rut2, 10)
-			continue
-		default:
-			numInt, err := strconv.Atoi(num)
-			if err != nil {
-				return RUT{}, ErrInvalidRUT
-			}
-
-			rut2 = append(rut2, numInt)
-		}
-	}
-
-	return rut2, nil
+type RUT struct {
+	Digits []uint8
+	VD     VD
 }
 
-func (r RUT) CalculateVD(ignoreLast bool) int {
-	var digits []int
-	if ignoreLast {
-		digits = r[:len(r)-1]
-	} else {
-		digits = r
+var rutRegex = regexp.MustCompile("[0-9k]")
+
+func parseRUT(rutStr string, ignoreVD bool) (RUT, error) {
+	numsStr := rutRegex.FindAllString(strings.ToLower(rutStr), -1)
+	if len(numsStr) < 7 || len(numsStr) > 10 {
+		return RUT{VD: VDNone}, errors.Wrap(ErrInvalidRUT, "invalid length")
 	}
 
-	seq := GetReverseSequence(len(digits))
+	digitsStr := numsStr[:len(numsStr)-1]
+	if ignoreVD {
+		digitsStr = numsStr
+	}
+
+	var rut RUT
+	for _, n := range digitsStr {
+		num, err := strconv.ParseInt(n, 10, 8)
+		if err != nil {
+			return RUT{}, errors.Wrap(ErrInvalidRUT, fmt.Sprintf("invalid digit '%s'", n))
+		}
+
+		rut.Digits = append(rut.Digits, uint8(num))
+	}
+
+	if ignoreVD {
+		rut.VD = VDNone
+		return rut, nil
+	}
+
+	var err error
+	rut.VD, err = parseVD(numsStr[len(numsStr)-1])
+	if err != nil {
+		return RUT{}, errors.Wrap(err, "invalid vd")
+	}
+
+	return rut, nil
+}
+
+func parseVD(vdStr string) (VD, error) {
+	vdStr = strings.ToLower(vdStr)
+	if vdStr == "k" {
+		return VDK, nil
+	}
+
+	num, err := strconv.ParseInt(vdStr, 10, 8)
+	if err != nil {
+		return VDNone, errors.Wrap(ErrInvalidVD, fmt.Sprintf("invalid digit '%s'", vdStr))
+	}
+
+	if num < 0 || num > 10 {
+		return VDNone, errors.Wrap(ErrInvalidVD, "vd should be k, or between 0 and 9")
+	}
+
+	return VD(num), nil
+}
+
+func generateRUT(min, max int) (RUT, error) {
+	if min >= max {
+		return RUT{}, errors.New("min should be lower than max")
+	}
+
+	digits := rand.Intn(max-min) + min
+	digitsStr := strconv.Itoa(digits)
+
+	rut, _ := parseRUT(digitsStr, true)
+	rut.VD = rut.calculateVD()
+
+	return rut, nil
+}
+
+func (r RUT) calculateVD() VD {
+	seq := generateReverseSequence(len(r.Digits))
 	var sum int
 	for i, mask := range seq {
-		sum += mask * r[i]
+		sum += mask * int(r.Digits[i])
 	}
 
-	return 11 - (sum % 11)
+	vd := 11 - (sum % 11)
+	if vd == 10 {
+		return VDK
+	}
+
+	if vd == 11 {
+		return VD0
+	}
+
+	return VD(vd)
 }
 
-func VDToString(vd int) string {
-	switch vd {
-	case 10:
+func (d VD) String() string {
+	if d == VDNone {
+		return "NONE"
+	}
+
+	if d == VDK {
 		return "K"
-	case 11:
-		return "0"
-	default:
-		return strconv.Itoa(vd)
-	}
-}
-
-func (r RUT) GetVDString() string {
-	val := strconv.Itoa(r[len(r)-1])
-	switch val {
-	case "10":
-		val = "K"
-	case "11":
-		val = "0"
 	}
 
-	return val
+	return strconv.Itoa(int(d))
 }
 
 func (r RUT) IsValid() bool {
-	expect := r.CalculateVD(true)
-	if expect == 11 { // -0 RUTs
+	expect := r.calculateVD()
+	if expect == 11 {
 		expect = 0
 	}
 
-	return r[len(r)-1] == expect
+	return r.VD == expect
 }
 
 func (r RUT) String() string {
-	if len(r) < 7 || len(r) > 10 {
-		return ""
+	var builder strings.Builder
+	for _, d := range r.Digits {
+		builder.WriteString(strconv.Itoa(int(d)))
 	}
 
-	var digits string
-	for _, d := range r[:len(r)-1] {
-		digits += strconv.Itoa(d)
-	}
+	builder.WriteString("-")
+	builder.WriteString(r.VD.String())
 
-	return digits + "-" + VDToString(r.CalculateVD(true))
+	return builder.String()
 }
 
-func (r RUT) PrettyString() string {
-	if len(r) < 7 || len(r) > 10 {
-		return ""
-	}
-
-	digits := r[:len(r)-1]
-
-	var digitsStr []string
-	for _, digit := range digits {
-		digitsStr = append(digitsStr, strconv.Itoa(digit))
-	}
-
-	var s string
-	for i := len(digits) % 3; i <= len(digits); i += 3 {
-		x := i - 3
-		if x < 0 {
-			x = 0
-		}
-
-		s += strings.Join(digitsStr[x:i], "")
-		if i+3 <= len(digits) && len(s) > 0 {
-			s += "."
-		}
-	}
-
-	return s + "-" + VDToString(r[len(r)-1])
-}
-
-func GetReverseSequence(length int) (s []int) {
+func generateReverseSequence(length int) (s []int) {
 	for len(s) < length {
 		if len(s) == 0 {
 			s = append(s, 2)

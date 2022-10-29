@@ -1,13 +1,9 @@
 package economy
 
 import (
-	"context"
 	"fmt"
-
 	"io"
-	"net/http"
 	"strings"
-	"time"
 	"unicode"
 
 	"golang.org/x/text/runes"
@@ -15,18 +11,17 @@ import (
 	"golang.org/x/text/unicode/norm"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/pkg/errors"
 	"github.com/sahilm/fuzzy"
 )
 
-var ISO4217Dict = map[string]string{
+var iso4217 = map[string]string{
 	"Baht tailandés":                   "THB",
 	"Balboa panameño":                  "PAB",
 	"Bolívar fuerte venezolano":        "VEF",
 	"Boliviano":                        "BOB",
 	"Colón costarricense":              "CRC",
-	"Corona checa":                     "CZK",
-	"Corona danesa":                    "DKK",
+	"Corona Checa":                     "CZK",
+	"Corona Danesa":                    "DKK",
 	"Corona islandesa":                 "ISK",
 	"Corona noruega":                   "NOK",
 	"Corona sueca":                     "SEK",
@@ -47,7 +42,7 @@ var ISO4217Dict = map[string]string{
 	"Forint húngaro":                   "HUF",
 	"Franco de la Polinesia Francesa":  "XPF",
 	"Franco suizo":                     "CHF",
-	"Guaraní paraguayo":                "PYG",
+	"Guaraní  paraguayo":               "PYG",
 	"Hryvnia ucraniano":                "UAH",
 	"Leu rumano":                       "RON",
 	"Libra egipcia":                    "EGP",
@@ -62,11 +57,12 @@ var ISO4217Dict = map[string]string{
 	"Peso mexicano":                    "MXN",
 	"Peso uruguayo":                    "UYU",
 	"Quetzal guatemalteco":             "GTQ",
-	"Rand surafricano":                 "ZAR",
-	"Real Brasileño":                   "BRL",
+	"Rand sudafricano":                 "ZAR",
+	"Real brasileño":                   "BRL",
 	"Rial iraní":                       "IRR",
 	"Rial saudita":                     "SAR",
 	"Ringgit malasio":                  "MYR",
+	"Riyal Catarí":                     "QAR",
 	"Rublo ruso":                       "RUB",
 	"Rupia de Indonesia":               "IDR",
 	"Rupia india":                      "INR",
@@ -85,109 +81,55 @@ type Currency struct {
 	ExchangeRate float64 `json:"exchange_rate"`
 }
 
-func GetCurrencies() ([]Currency, error) {
-	url, err := GetCurrenciesDailyURL()
-	if err != nil {
-		return nil, err
-	}
-
-	timeoutContext, cancel := context.WithTimeout(context.Background(), time.Second*5)
-	defer cancel()
-
-	req, err := http.NewRequestWithContext(
-		timeoutContext,
-		"GET",
-		url,
-		nil,
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	var client = http.Client{}
-	res, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer res.Body.Close()
-
-	if res.StatusCode != 200 {
-		return nil, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
-	}
-
-	currencies, err := ParseCurrenciesHTML(res.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	return currencies, nil
-}
-
-func GetCurrenciesDailyURL() (string, error) {
-	resp, err := http.Get("https://si3.bcentral.cl/Indicadoressiete/secure/IndicadoresDiarios.aspx")
-	if err != nil {
-		return "", errors.Wrap(err, "unable to execute request")
-	}
-
-	doc, err := goquery.NewDocumentFromReader(resp.Body)
-	if err != nil {
-		return "", err
-	}
-
-	var url string
-	doc.Find("#hypLnk1_11").Each(func(i int, s *goquery.Selection) {
-		if i != 0 {
-			return
-		}
-
-		url, _ = s.Attr("href")
-	})
-
-	if url == "" {
-		return "", errors.New("no url found")
-	}
-
-	return "https://si3.bcentral.cl/Indicadoressiete/secure/" + url, nil
-}
-
-func ParseCurrenciesHTML(r io.ReadCloser) (currencies []Currency, err error) {
+func parseCurrenciesHTML(r io.ReadCloser) (currencies []*Currency, err error) {
 	doc, err := goquery.NewDocumentFromReader(r)
 	if err != nil {
 		return nil, err
 	}
 
-	doc.Find("tr").Each(func(i int, s *goquery.Selection) {
-		var name string
-		var exchange string
+	doc.Find("tr").EachWithBreak(func(_ int, s *goquery.Selection) bool {
+		name := strings.TrimSpace(s.Children().Get(0).FirstChild.Data)
 
-		s.Find("td").Each(func(i int, s *goquery.Selection) {
-			switch i {
-			case 0:
-				name = strings.TrimSpace(s.Text())
-			case 1:
-				exchange = s.Text()
-			}
-		})
+		rateStr := s.Children().Get(1).FirstChild.Data
 
-		currencies = append(currencies, Currency{
+		var rate float64
+		rate, err = parseCurrency(rateStr)
+		if err != nil {
+			err = fmt.Errorf("unable to parse currency '%s' with value '%s", name, rateStr)
+			return false
+		}
+
+		code, exists := iso4217[name]
+		if !exists {
+			err = fmt.Errorf("unknown currency '%s', no matching iso4217 code", name)
+			return false
+		}
+
+		currencies = append(currencies, &Currency{
 			Name:         name,
-			ISO4217:      currencyNameToISO4217(name),
-			ExchangeRate: parseChileanFloat(exchange),
+			ISO4217:      code,
+			ExchangeRate: rate,
 		})
+
+		return true
 	})
 
-	return currencies, nil
+	if err != nil {
+		return nil, err
+	}
+
+	return
 }
 
-func searchCurrency(currencies []Currency, patterns string) []Currency {
+func filterCurrencies(currencies []*Currency, filter string) []*Currency {
 	var hints []string
 	for _, currency := range currencies {
 		hints = append(hints, fmt.Sprintf("%s %s", removeTilde(currency.Name), currency.ISO4217))
 	}
 
-	matches := fuzzy.Find(removeTilde(patterns), hints)
+	matches := fuzzy.Find(removeTilde(filter), hints)
 
-	var results []Currency
+	var results []*Currency
 	for _, match := range matches {
 		results = append(results, currencies[match.Index])
 	}
@@ -199,9 +141,4 @@ func removeTilde(text string) string {
 	t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
 	result, _, _ := transform.String(t, text)
 	return result
-}
-
-func currencyNameToISO4217(name string) string {
-	iso4217, _ := ISO4217Dict[name]
-	return iso4217
 }

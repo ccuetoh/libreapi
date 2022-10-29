@@ -3,7 +3,7 @@
 </p>  
 
 # LibreAPI
-[![License](https://img.shields.io/github/license/CamiloHernandez/libreapi)](https://github.com/CamiloHernandez/libreapi/blob/master/LICENSE)  
+[![License](https://img.shields.io/github/license/CamiloHernandez/libreapi)](https://github.com/ccuetoh/libreapi/blob/master/LICENSE)  
 [![Website Status](https://img.shields.io/uptimerobot/status/m786861139-81aee65cd49486d2d9e3c006)](https://stats.uptimerobot.com/p9QANizwxn)
 
 **English:**

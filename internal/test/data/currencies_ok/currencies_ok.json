@@ -1,0 +1,292 @@
+[
+  {
+    "name": "Baht tailandés",
+    "iso4217": "THB",
+    "exchange_rate": 25.03
+  },
+  {
+    "name": "Balboa panameño",
+    "iso4217": "PAB",
+    "exchange_rate": 945.31
+  },
+  {
+    "name": "Bolívar fuerte venezolano",
+    "iso4217": "VEF",
+    "exchange_rate": 112.14
+  },
+  {
+    "name": "Boliviano",
+    "iso4217": "BOB",
+    "exchange_rate": 137.8
+  },
+  {
+    "name": "Colón costarricense",
+    "iso4217": "CRC",
+    "exchange_rate": 1.52
+  },
+  {
+    "name": "Corona Checa",
+    "iso4217": "CZK",
+    "exchange_rate": 38.56
+  },
+  {
+    "name": "Corona Danesa",
+    "iso4217": "DKK",
+    "exchange_rate": 126.81
+  },
+  {
+    "name": "Corona islandesa",
+    "iso4217": "ISK",
+    "exchange_rate": 6.59
+  },
+  {
+    "name": "Corona noruega",
+    "iso4217": "NOK",
+    "exchange_rate": 92.28
+  },
+  {
+    "name": "Corona sueca",
+    "iso4217": "SEK",
+    "exchange_rate": 86.46
+  },
+  {
+    "name": "DEG",
+    "iso4217": "DEG",
+    "exchange_rate": 1219.75
+  },
+  {
+    "name": "Dírham de Emiratos Árabes Unidos",
+    "iso4217": "AED",
+    "exchange_rate": 257.44
+  },
+  {
+    "name": "Dírham Marroquí",
+    "iso4217": "MAD",
+    "exchange_rate": 87.07
+  },
+  {
+    "name": "Dólar australiano",
+    "iso4217": "AUD",
+    "exchange_rate": 612.49
+  },
+  {
+    "name": "Dólar canadiense",
+    "iso4217": "CAD",
+    "exchange_rate": 698.52
+  },
+  {
+    "name": "Dólar de bermudas",
+    "iso4217": "BMD",
+    "exchange_rate": 945.31
+  },
+  {
+    "name": "Dólar de Islas Caimán",
+    "iso4217": "KYD",
+    "exchange_rate": 1152.82
+  },
+  {
+    "name": "Dólar de las Bahamas",
+    "iso4217": "BSD",
+    "exchange_rate": 945.31
+  },
+  {
+    "name": "Dolár fiyiano",
+    "iso4217": "FJD",
+    "exchange_rate": 410.36
+  },
+  {
+    "name": "Dólar hongkonés",
+    "iso4217": "HKD",
+    "exchange_rate": 120.43
+  },
+  {
+    "name": "Dólar neozelandés",
+    "iso4217": "NZD",
+    "exchange_rate": 553.49
+  },
+  {
+    "name": "Dólar singapurense",
+    "iso4217": "SGD",
+    "exchange_rate": 671.77
+  },
+  {
+    "name": "Dólar taiwanés",
+    "iso4217": "TWD",
+    "exchange_rate": 29.55
+  },
+  {
+    "name": "Euro",
+    "iso4217": "EUR",
+    "exchange_rate": 943.61
+  },
+  {
+    "name": "Forint húngaro",
+    "iso4217": "HUF",
+    "exchange_rate": 2.31
+  },
+  {
+    "name": "Franco de la Polinesia Francesa",
+    "iso4217": "XPF",
+    "exchange_rate": 7.83
+  },
+  {
+    "name": "Franco suizo",
+    "iso4217": "CHF",
+    "exchange_rate": 954.86
+  },
+  {
+    "name": "Guaraní  paraguayo",
+    "iso4217": "PYG",
+    "exchange_rate": 0.13
+  },
+  {
+    "name": "Hryvnia ucraniano",
+    "iso4217": "UAH",
+    "exchange_rate": 25.85
+  },
+  {
+    "name": "Leu rumano",
+    "iso4217": "RON",
+    "exchange_rate": 192.85
+  },
+  {
+    "name": "Libra egipcia",
+    "iso4217": "EGP",
+    "exchange_rate": 41
+  },
+  {
+    "name": "Libra esterlina",
+    "iso4217": "GBP",
+    "exchange_rate": 1095.25
+  },
+  {
+    "name": "Nueva lira turca",
+    "iso4217": "TRY",
+    "exchange_rate": 50.88
+  },
+  {
+    "name": "Nuevo sol peruano",
+    "iso4217": "PEN",
+    "exchange_rate": 237.6
+  },
+  {
+    "name": "Peso argentino",
+    "iso4217": "ARS",
+    "exchange_rate": 6.07
+  },
+  {
+    "name": "Peso colombiano",
+    "iso4217": "COP",
+    "exchange_rate": 0.2
+  },
+  {
+    "name": "Peso cubano",
+    "iso4217": "CUP",
+    "exchange_rate": 39.39
+  },
+  {
+    "name": "Peso de República Dominicana",
+    "iso4217": "DOP",
+    "exchange_rate": 17.52
+  },
+  {
+    "name": "Peso filipino",
+    "iso4217": "PHP",
+    "exchange_rate": 16.24
+  },
+  {
+    "name": "Peso mexicano",
+    "iso4217": "MXN",
+    "exchange_rate": 47.65
+  },
+  {
+    "name": "Peso uruguayo",
+    "iso4217": "UYU",
+    "exchange_rate": 23.2
+  },
+  {
+    "name": "Quetzal guatemalteco",
+    "iso4217": "GTQ",
+    "exchange_rate": 120.92
+  },
+  {
+    "name": "Rand sudafricano",
+    "iso4217": "ZAR",
+    "exchange_rate": 52.74
+  },
+  {
+    "name": "Real brasileño",
+    "iso4217": "BRL",
+    "exchange_rate": 178.81
+  },
+  {
+    "name": "Rial iraní",
+    "iso4217": "IRR",
+    "exchange_rate": 0.02
+  },
+  {
+    "name": "Rial saudita",
+    "iso4217": "SAR",
+    "exchange_rate": 252.08
+  },
+  {
+    "name": "Ringgit malasio",
+    "iso4217": "MYR",
+    "exchange_rate": 200.47
+  },
+  {
+    "name": "Riyal Catarí",
+    "iso4217": "QAR",
+    "exchange_rate": 256.86
+  },
+  {
+    "name": "Rublo ruso",
+    "iso4217": "RUB",
+    "exchange_rate": 15.42
+  },
+  {
+    "name": "Rupia de Indonesia",
+    "iso4217": "IDR",
+    "exchange_rate": 0.06
+  },
+  {
+    "name": "Rupia india",
+    "iso4217": "INR",
+    "exchange_rate": 11.46
+  },
+  {
+    "name": "Rupia pakistaní",
+    "iso4217": "PKR",
+    "exchange_rate": 4.27
+  },
+  {
+    "name": "Shekel israelí",
+    "iso4217": "ILS",
+    "exchange_rate": 269.67
+  },
+  {
+    "name": "Tenge de Kazajstán",
+    "iso4217": "KZT",
+    "exchange_rate": 2.04
+  },
+  {
+    "name": "Won coreano",
+    "iso4217": "KRW",
+    "exchange_rate": 0.67
+  },
+  {
+    "name": "Yen",
+    "iso4217": "JPY",
+    "exchange_rate": 6.47
+  },
+  {
+    "name": "Yuan",
+    "iso4217": "CNY",
+    "exchange_rate": 130.45
+  },
+  {
+    "name": "Zloty polaco",
+    "iso4217": "PLN",
+    "exchange_rate": 200.07
+  }
+]

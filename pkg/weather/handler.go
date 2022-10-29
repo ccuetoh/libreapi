@@ -1,69 +1,104 @@
 package weather
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/ccuetoh/libreapi/pkg/env"
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
+type Service interface {
+	GetClimateStations() ([]*ClimateStation, error)
+}
 
-func StationsHandler(ctx *gin.Context) {
-	stationName := ctx.Query("name")
-	stationCode := ctx.Query("code")
+type Handler struct {
+	env     *env.Env
+	service Service
+}
 
-	if stationName != "" && stationCode != "" {
-		ctx.JSON(400, gin.H{
-			"status": "error",
-			"errors": gin.H{
-				"conflict": "can't search both name and code at the same time",
-			},
-		})
-		return
+func NewHandler(env *env.Env, service Service) *Handler {
+	return &Handler{
+		env:     env,
+		service: service,
 	}
+}
 
-	stations, err := GetClimateStations()
-	if err != nil {
-		ctx.JSON(500, gin.H{
-			"status": "error",
-			"errors": gin.H{
-				"fetch error": "unable to fetch the data",
-			},
-		})
-		return
-	}
+func (h *Handler) Stations() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		name := c.Query("name")
+		code := c.Query("code")
 
-	if stationName != "" {
-		stationsFound := searchStationName(stations, stationName)
-		if len(stationsFound) == 0 {
-			ctx.JSON(404, gin.H{
-				"status": "success",
-				"data": nil,
+		if name != "" && code != "" {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status": "error",
+				"errors": gin.H{
+					"conflict": "can't search both name and code at the same time",
+				},
 			})
+
+			h.env.Log(c).Trace("both name and code")
 			return
 		}
 
-		ctx.JSON(200, gin.H{
-			"status": "success",
-			"data":   stationsFound,
-		})
-		return
-	}
-
-	if stationCode != "" {
-		match, found := searchStationCode(stations, stationCode)
-		if !found {
-			ctx.JSON(404, gin.H{
-				"status": "success",
-				"data": nil,
+		stations, err := h.service.GetClimateStations()
+		if err != nil {
+			c.JSON(500, gin.H{
+				"status": "error",
+				"errors": gin.H{
+					"fetch": "unable to fetch data",
+				},
 			})
+
+			h.env.Log(c).Errorf("unable to fetch data: %v", err)
 			return
 		}
 
-		ctx.JSON(200, gin.H{
-			"status": "success",
-			"data":   match,
-		})
-		return
-	}
+		if name != "" {
+			stationsFound := searchStationName(stations, name)
+			if len(stationsFound) == 0 {
+				c.JSON(http.StatusNotFound, gin.H{
+					"status": "success",
+					"data":   nil,
+				})
 
-	ctx.JSON(200, gin.H{
-		"status": "success",
-		"data":   stations,
-	})
+				h.env.Log(c).Trace("ok (none)")
+				return
+			}
+
+			c.JSON(http.StatusOK, gin.H{
+				"status": "success",
+				"data":   stationsFound,
+			})
+
+			h.env.Log(c).Trace("ok")
+			return
+		}
+
+		if code != "" {
+			match, found := searchStationCode(stations, code)
+			if !found {
+				c.JSON(http.StatusNotFound, gin.H{
+					"status": "success",
+					"data":   nil,
+				})
+
+				h.env.Log(c).Trace("ok (none)")
+				return
+			}
+
+			c.JSON(http.StatusOK, gin.H{
+				"status": "success",
+				"data":   match,
+			})
+
+			h.env.Log(c).Trace("ok")
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"status": "success",
+			"data":   stations,
+		})
+
+		h.env.Log(c).Trace("ok")
+	}
 }
