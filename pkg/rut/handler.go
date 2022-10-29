@@ -137,7 +137,7 @@ func (h *Handler) Activity() gin.HandlerFunc {
 			return
 		}
 
-		details, err := h.service.GetProfile(rut)
+		profile, err := h.service.GetProfile(rut)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"status":  "error",
@@ -152,8 +152,8 @@ func (h *Handler) Activity() gin.HandlerFunc {
 			"status": "success",
 			"data": gin.H{
 				"rut":        rut.String(),
-				"name":       details.Name,
-				"activities": details.Activities,
+				"name":       profile.Name,
+				"activities": profile.Activities,
 			},
 		})
 
@@ -163,7 +163,7 @@ func (h *Handler) Activity() gin.HandlerFunc {
 
 func (h *Handler) Generate() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		min := 1000000
+		min := 500000
 		max := 25000000
 
 		var err error

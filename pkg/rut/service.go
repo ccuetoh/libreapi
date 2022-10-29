@@ -30,8 +30,8 @@ func NewDefaultService() *DefaultService {
 }
 
 type SIIProfile struct {
-	Name       string
-	Activities []*Activity
+	Name       string      `json:"name"`
+	Activities []*Activity `json:"activities"`
 }
 
 type Activity struct {
@@ -70,7 +70,7 @@ func (s *DefaultService) GetProfile(rut RUT) (*SIIProfile, error) {
 		return nil, fmt.Errorf("non ok status: %d %s", res.StatusCode, res.Status)
 	}
 
-	return parseHTML(res.Body)
+	return parseActivitiesHTML(res.Body)
 }
 
 func (s *DefaultService) getCaptcha() (code string, captcha string, err error) {
@@ -105,7 +105,7 @@ func (s *DefaultService) getCaptcha() (code string, captcha string, err error) {
 	return data.Code, string(codeDecoded)[36:40], nil
 }
 
-func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
+func parseActivitiesHTML(r io.ReadCloser) (*SIIProfile, error) {
 	layout := "02-01-2006"
 
 	doc, err := goquery.NewDocumentFromReader(r)
@@ -120,15 +120,17 @@ func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
 	}
 
 	var activities []*Activity
-	doc.Find("table.tabla:nth-child(27) > tbody:nth-child(1) > tr:nth-child(2)").Each(func(_ int, s *goquery.Selection) {
-		code, err := strconv.Atoi(clean(s.Find("td:nth-child(2)")))
+	doc.Find("table.tabla:nth-child(27) > tbody:nth-child(1) > tr:nth-child(2)").EachWithBreak(func(_ int, s *goquery.Selection) bool {
+		var code int
+		code, err = strconv.Atoi(clean(s.Find("td:nth-child(2)")))
 		if err != nil {
-			return
+			return false
 		}
 
-		date, err := time.Parse(layout, clean(s.Find("td:nth-child(5)")))
+		var date time.Time
+		date, err = time.Parse(layout, clean(s.Find("td:nth-child(5)")))
 		if err != nil {
-			return
+			return false
 		}
 
 		activities = append(activities, &Activity{
@@ -138,7 +140,13 @@ func parseHTML(r io.ReadCloser) (*SIIProfile, error) {
 			SubjectToVAT: clean(s.Find("td:nth-child(4)")) == "Si",
 			Date:         date,
 		})
+
+		return true
 	})
+
+	if err != nil {
+		return nil, err
+	}
 
 	return &SIIProfile{Name: name, Activities: activities}, nil
 }
