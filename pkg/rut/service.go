@@ -121,7 +121,12 @@ func parseActivitiesHTML(r io.ReadCloser) (*SIIProfile, error) {
 	}
 
 	var activities []*Activity
-	doc.Find("table.tabla:nth-child(27) > tbody:nth-child(1) > tr:nth-child(2)").EachWithBreak(func(_ int, s *goquery.Selection) bool {
+	doc.Find("table.tabla:nth-child(27) > tbody:nth-child(1) > tr").EachWithBreak(func(i int, s *goquery.Selection) bool {
+		if i == 0 {
+			// Skip header
+			return true
+		}
+
 		var code int
 		code, err = strconv.Atoi(clean(s.Find("td:nth-child(2)")))
 		if err != nil {
